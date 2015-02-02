@@ -13,15 +13,18 @@ public class BaseSQLite extends SQLiteOpenHelper{
     private static final String COL_ID="ID";
     private static final String TABLE_DEPENSES= "table_depenses";
     private static final String TABLE_REVENUS= "table_depenses";
-
+    private static final String COL_DATE="DATE";
     private static final String COL_NOM= "NOM";
     private static final String COL_CATEGORIE="CATEGORIE";
     private static final String COL_MONTANT= "MONTANT";
 
     private static final String CREATE_BDD = "CREATE TABLE " + TABLE_DEPENSES + " ("
-            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DEPENSE + " TEXT NOT NULL);" +
-            "CREATE TABLE "+ TABLE_REVENUS+"("+ COL_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + COL_REVENUS+ "TEXT NOT NULL);"  ;
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DATE + " TEXT NOT NULL,"
+            + COL_CATEGORIE+"TEXT NOT NULL,"+COL_NOM+"TEXT NOT NULL,"+COL_MONTANT+"TEXT NOT NULL);"
+            +" CREATE TABLE"+ TABLE_REVENUS+ "("
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DATE + " TEXT NOT NULL,"
+            + COL_CATEGORIE+"TEXT NOT NULL,"+COL_NOM+"TEXT NOT NULL,"+COL_MONTANT+"TEXT NOT NULL);";
+
 
     public BaseSQLite(Context context, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);
