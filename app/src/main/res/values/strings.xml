@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">PocketBudget</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="title_expenditure">Nouvelle dépense</string>
+    <string name="date_expenditure">Date :</string>
+    <string name="category_expenditure">Catégorie :</string>
+    <string name="name_expenditure">Nom :</string>
+    <string name="sum_expenditure">Montant :</string>
+
+    <string name="title_income">Nouvelle dépense</string>
+    <string name="date_income">Date :</string>
+    <string name="category_income">Catégorie :</string>
+    <string name="name_income">Nom :</string>
+    <string name="sum_income">Montant :</string>
+
+    <string name="validate_button">Valider</string>
 
 </resources>

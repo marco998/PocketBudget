@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_expenditure">New Expenditure</string>
+    <string name="date_expenditure">Date :</string>
+    <string name="category_expenditure">Category :</string>
+    <string name="name_expenditure">Name :</string>
+    <string name="sum_expenditure">Sum :</string>
+
+    <string name="title_income">New income</string>
+    <string name="date_income">Date :</string>
+    <string name="category_income">Category :</string>
+    <string name="name_income">Name :</string>
+    <string name="sum_income">Sum :</string>
+
+    <string name="validate_button">Confirm</string>
+
+</resources>
