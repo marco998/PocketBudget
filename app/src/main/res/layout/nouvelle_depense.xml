@@ -10,7 +10,8 @@
         android:layout_gravity="center_horizontal"
         android:weightSum="1"
         android:background="#ff61c3ff"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:id="@+id/layout_principale_depense">
 
         <TextView
             android:layout_width="match_parent"

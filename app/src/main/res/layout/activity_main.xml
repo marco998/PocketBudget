@@ -14,39 +14,57 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/title_application"
+            android:id="@+id/title_application"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="40dp"
+            android:layout_marginBottom="50dp"
+            android:textColor="#FFFFFF"
+            android:textIsSelectable="false"
+            android:visibility="visible" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:text="Entrées d&apos;Argent"
-            android:id="@+id/button"
-            android:layout_gravity="center_horizontal" />
+            android:text="@string/income_button_menu"
+            android:id="@+id/income_button_main"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="77dp"
-            android:text="SORTIES D&apos;ARGENT"
-            android:id="@+id/button2"
-            android:layout_gravity="center_horizontal" />
+            android:text="@string/expenditure_button_menu"
+            android:id="@+id/expenditure_button_main"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="50dp"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="162dp">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Diff."
+                android:text="@string/difference"
                 android:weightSum="1"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:background="@android:color/white" />
+                android:background="@android:color/white"
+                android:id="@+id/difference" />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
-                android:id="@id/difference"
                 />
         </LinearLayout>
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

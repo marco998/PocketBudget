@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="title_application">Pocket Budget</string>
+    <string name="income_button_menu">Income</string>
+    <string name="expenditure_button_menu">Expenditure</string>
+    <string name="app_name">Pocket Budget</string>
+
     <string name="title_expenditure">New Expenditure</string>
     <string name="date_expenditure">Date :</string>
     <string name="category_expenditure">Category :</string>
@@ -12,6 +17,8 @@
     <string name="category_income">Category :</string>
     <string name="name_income">Name :</string>
     <string name="sum_income">Sum :</string>
+
+    <string name="difference">Diff.</string>
 
     <string name="validate_button">Confirm</string>
 
