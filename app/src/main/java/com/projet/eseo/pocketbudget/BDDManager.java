@@ -117,13 +117,13 @@ public class BDDManager {
         Cursor cursor=bdd.rawQuery("Select * from Expenditure",null);
 
         if(cursor.moveToFirst()){
-            while(cursor.isAfterLast()==false){
+            do{
                 Expenditure expenditure = new Expenditure();
                 expenditure.setNom(cursor.getString(NUM_COL_NOM));
                 expenditure.setMontant(cursor.getFloat(NUM_COL_MONTANT));
                 expenditures.add(expenditure);
                 cursor.moveToNext();
-            }
+            }while(cursor.isAfterLast()==false);
         }
         return expenditures;
     }
