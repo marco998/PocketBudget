@@ -46,6 +46,12 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void goToIncomeList(View view)
+    {
+        Intent intent = new Intent(this, ListRevenusActivity.class);
+        startActivity(intent);
+    }
+
 
     public void goToNewIncome(View view)
     {

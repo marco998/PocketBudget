@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="5dp"
-            android:onClick="goToNewIncome"/>
+            android:onClick="goToIncomeList"/>
 
         <Button
             android:layout_width="match_parent"

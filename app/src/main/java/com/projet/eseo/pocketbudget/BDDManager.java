@@ -133,7 +133,7 @@ public class BDDManager {
         Cursor cursor=bdd.rawQuery("Select * from Revenu",null);
 
         if(cursor.moveToFirst()){
-            while(cursor.isAfterLast()==false){
+            while(!cursor.isAfterLast()){
                 Revenu revenu= new Revenu();
                 revenu.setNom(cursor.getString(NUM_COL_NOM));
                 revenu.setMontant(cursor.getFloat(NUM_COL_MONTANT));

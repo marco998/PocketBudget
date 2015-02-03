@@ -3,7 +3,7 @@
 
     <string name="title_application">Pocket Budget</string>
     <string name="income_button_menu">Entrée d\'argent</string>
-    <string name="expenditure_button_menu">Entrée d\'argent</string>
+    <string name="expenditure_button_menu">Sortie d\'argent</string>
     <string name="app_name">Pocket Budget</string>
     <string name="title_expenditure">Nouvelle dépense</string>
     <string name="date_expenditure">Date :</string>
@@ -18,6 +18,7 @@
     <string name="validate_button">Valider</string>
     <string name="title_activity_new_income">Nouveau Revenu</string>
     <string name="title_activity_new_expenditure">Nouvelle dépense</string>
+    <string name="title_activity_list_revenus">Liste des revenus</string>
     <string name="action_settings">Options</string>
     <string name="difference_textView">Diff. :</string>
 
