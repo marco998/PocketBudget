@@ -21,6 +21,8 @@
     <string name="title_activity_list_revenus">Liste des incomes</string>
     <string name="action_settings">Options</string>
     <string name="difference_textView">Diff. :</string>
+    <string name="add_income_butn">Ajouter nouveau revenu</string>
+    <string name="add_expenditure_butn">Ajouter nouvelle dépense</string>
 
     <string-array name="categories_list_income">
         <item>SALAIRE</item>
@@ -40,5 +42,7 @@
         <item>EXTRAS</item>
     </string-array>
 
+    <string name="title_activity_list_expenditure">ListExpenditureActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

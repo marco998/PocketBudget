@@ -1,17 +1,11 @@
 package com.projet.eseo.pocketbudget;
 
-import android.app.ListActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class NewExpenditureActivity extends ActionBarActivity {
@@ -27,7 +21,6 @@ public class NewExpenditureActivity extends ActionBarActivity {
 
         categories_expenditure_spinner = (Spinner) findViewById(R.id.categories_expenditure_spinner);
         categories_adapter = ArrayAdapter.createFromResource(this,R.array.categories_list_expenditure,android.R.layout.simple_spinner_item);
-
         categories_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categories_expenditure_spinner.setAdapter(categories_adapter);
 
