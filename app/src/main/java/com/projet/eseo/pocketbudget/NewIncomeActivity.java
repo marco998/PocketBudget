@@ -4,19 +4,27 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 
 public class NewIncomeActivity extends ActionBarActivity {
+
+    private ArrayAdapter<CharSequence> categories_income_adapter;
+    private Spinner categories_income_spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_income);
 
-        ListView categorie = (ListView) findViewById(R.id.categorie_list);
+        categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
 
+        categories_income_adapter = ArrayAdapter.createFromResource(this, R.array.categories_list_income, android.R.layout.simple_spinner_item);
 
+        categories_income_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categories_income_spinner.setAdapter(categories_income_adapter);
     }
 
 

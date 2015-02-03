@@ -66,11 +66,10 @@
                 android:id="@+id/categorie_textView"
                 android:textSize="30dp" />
 
-            <ListView
+            <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/categorie_list"
-                android:choiceMode="multipleChoice" />
+                android:id="@+id/categories_income_spinner" />
 
         </LinearLayout>
 

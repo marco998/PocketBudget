@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class NewExpenditureActivity extends ActionBarActivity {
 
     private ArrayAdapter<CharSequence> categories_adapter;
-    private Spinner categories_spinner;
+    private Spinner categories_expenditure_spinner;
 
 
     @Override
@@ -25,11 +25,11 @@ public class NewExpenditureActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_expenditure);
 
-        categories_spinner = (Spinner) findViewById(R.id.categories_spinner);
-        categories_adapter = ArrayAdapter.createFromResource(this,R.array.categories_list,android.R.layout.simple_spinner_item);
+        categories_expenditure_spinner = (Spinner) findViewById(R.id.categories_expenditure_spinner);
+        categories_adapter = ArrayAdapter.createFromResource(this,R.array.categories_list_expenditure,android.R.layout.simple_spinner_item);
 
         categories_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categories_spinner.setAdapter(categories_adapter);
+        categories_expenditure_spinner.setAdapter(categories_adapter);
 
     }
 
