@@ -21,7 +21,7 @@ public class BaseSQLite extends SQLiteOpenHelper{
     private static final String CREATE_BDD = "CREATE TABLE " + TABLE_DEPENSES + " ("
             + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DATE + " TEXT NOT NULL,"
             + COL_CATEGORIE+"TEXT NOT NULL,"+COL_NOM+"TEXT NOT NULL,"+COL_MONTANT+"TEXT NOT NULL);"
-            +" CREATE TABLE"+ TABLE_REVENUS+ "("
+            +" CREATE TABLE "+ TABLE_REVENUS+ "("
             + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DATE + " TEXT NOT NULL,"
             + COL_CATEGORIE+"TEXT NOT NULL,"+COL_NOM+"TEXT NOT NULL,"+COL_MONTANT+"TEXT NOT NULL);";
 
@@ -38,7 +38,8 @@ public class BaseSQLite extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE " + TABLE_DEPENSES + ";");
+        db.execSQL("DROP TABLE " + TABLE_DEPENSES + ";" +
+                "DROP TABLE "+TABLE_REVENUS+ ";");
         onCreate(db);
     }
 }

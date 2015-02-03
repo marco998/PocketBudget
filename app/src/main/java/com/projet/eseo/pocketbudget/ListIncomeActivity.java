@@ -9,19 +9,19 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 
-public class ListRevenusActivity extends ActionBarActivity {
+public class ListIncomeActivity extends ActionBarActivity {
 
     ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_revenus);
+        setContentView(R.layout.activity_list_incomes);
         listView=(ListView)findViewById(R.id.listViewRevenus);
 
         BDDManager bdd= new BDDManager(this);
 
-        ArrayList<Revenu> listString = bdd.getAllRevenus();
+        ArrayList<Income> listString = bdd.getAllRevenus();
         StringAdapter adapter =
                 new StringAdapter(getApplicationContext(), listString);
 

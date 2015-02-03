@@ -28,7 +28,7 @@
             android:parentActivityName="com.projet.eseo.pocketbudget.MainActivity" >
         </activity>
         <activity
-            android:name=".ListRevenusActivity"
+            android:name=".ListIncomeActivity"
             android:label="@string/title_activity_list_revenus"
             android:parentActivityName=".MainActivity" >
             <meta-data
