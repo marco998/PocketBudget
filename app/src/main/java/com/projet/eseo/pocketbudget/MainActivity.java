@@ -54,16 +54,13 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-
-    public void goToNewIncome(View view)
+    public void goToExpenditureList(View view)
     {
-        Intent intent = new Intent(this, NewIncomeActivity.class);
+        Intent intent = new Intent(this, ListExpenditureActivity.class);
         startActivity(intent);
     }
 
-    public void goToNewExpenditure(View view)
-    {
-        Intent intent = new Intent(this, NewExpenditureActivity.class);
-        startActivity(intent);
-    }
+
+
+
 }

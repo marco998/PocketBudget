@@ -1,9 +1,11 @@
 package com.projet.eseo.pocketbudget;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -25,8 +27,7 @@ public class ListIncomeActivity extends ActionBarActivity {
         Income income= new Income(new Date(12,01,2012),"Test","Revenu",1000);
         bdd.insertRevenu(income);
         ArrayList<Income> listString = bdd.getAllRevenus();
-        StringAdapter adapter =
-                new StringAdapter(getApplicationContext(), listString);
+        StringAdapter adapter = new StringAdapter(getApplicationContext(), listString);
 
         listView.setAdapter(adapter);
 
@@ -53,5 +54,12 @@ public class ListIncomeActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void goToNewIncome(View view)
+    {
+        Intent intent = new Intent(this, NewIncomeActivity.class);
+        startActivity(intent);
     }
 }

@@ -31,7 +31,6 @@
     </string-array>
 
     <string-array name="categories_list_expenditure">
-
         <item>ACCOMODATION</item>
         <item>TRANSPORT</item>
         <item>ENERGY</item>
