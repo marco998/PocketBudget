@@ -23,6 +23,7 @@
     <string name="difference_textView">Diff. :</string>
     <string name="add_income_butn">Ajouter nouveau revenu</string>
     <string name="add_expenditure_butn">Ajouter nouvelle dépense</string>
+    <string name="statistics_butn">Voir statistiques</string>
 
     <string-array name="categories_list_income">
         <item>SALAIRE</item>

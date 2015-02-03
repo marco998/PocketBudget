@@ -20,9 +20,9 @@
     <string name="title_activity_new_expenditure">New Expenditure</string>
     <string name="action_settings">Settings</string>
     <string name="difference_textView">Diff. :</string>
-
     <string name="add_income_butn">Add new income</string>
     <string name="add_expenditure_butn">Add new expenditure</string>
+    <string name="statistics_butn">See statistics</string>
 
     <string-array name="categories_list_income">
         <item>INCOME</item>

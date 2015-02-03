@@ -9,9 +9,10 @@
         android:text="@string/add_income_butn"
         android:id="@+id/add_income_button"
         android:layout_alignParentBottom="true" />
-    
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/listViewRevenus"/>
+        android:id="@+id/listViewRevenus"
+        android:layout_above="@+id/add_income_button" />
 </RelativeLayout>
