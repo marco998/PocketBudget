@@ -14,27 +14,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/title_application"
-            android:id="@+id/title_application"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:textSize="40dp"
-            android:layout_marginBottom="50dp"
-            android:textColor="#FFFFFF"
-            android:textIsSelectable="false"
-            android:visibility="visible" />
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:text="@string/income_button_menu"
             android:id="@+id/income_button_main"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="5dp"
+            android:onClick="goToNewIncome"/>
 
         <Button
             android:layout_width="match_parent"
@@ -42,25 +30,35 @@
             android:text="@string/expenditure_button_menu"
             android:id="@+id/expenditure_button_main"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="50dp"
+            android:onClick="goToNewExpenditure"/>
+
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="162dp">
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:weightSum="1">
 
-            <EditText
+            <TextView
+                android:layout_width="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/difference_textView"
+                android:id="@+id/difference_textView"
+                android:background="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="40dp"
+                android:layout_height="match_parent" />
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="@string/difference"
-                android:weightSum="1"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:background="@android:color/white"
-                android:id="@+id/difference" />
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="60dp"
-                />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/difference"
+                android:background="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="40dp"
+                android:layout_height="match_parent"
+            />
+
         </LinearLayout>
 
     </LinearLayout>

@@ -4,31 +4,33 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
-import android.view.View;
+import android.widget.ListView;
 
 
-public class MainActivity extends ActionBarActivity {
+public class NewIncomeActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+        setContentView(R.layout.activity_new_income);
+
+        ListView categorie = (ListView) findViewById(R.id.categorie_list);
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
+
 
     @Override
     protected void onResume(){
         super.onResume();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_new_income, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -43,18 +45,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-
-    public void goToNewIncome(View view)
-    {
-        Intent intent = new Intent(this, NewIncomeActivity.class);
-        startActivity(intent);
-    }
-
-    public void goToNewExpenditure(View view)
-    {
-        Intent intent = new Intent(this, NewExpenditureActivity.class);
-        startActivity(intent);
     }
 }
