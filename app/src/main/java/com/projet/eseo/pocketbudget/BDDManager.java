@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  * Created by marc-antoine on 02/02/15.
@@ -106,6 +107,43 @@ public class BDDManager {
         return cursorToDepense(c);
     }
 
+    public Revenu getRevenuWithNom(String nom){
+        Cursor c = bdd.query(TABLE_REVENUS, new String[] {COL_ID, COL_CATEGORIE, COL_DATE, COL_NOM,COL_MONTANT}, COL_NOM + " LIKE \"" + nom +"\"", null, null, null, null);
+        return cursorToRevenu(c);
+    }
+
+    public ArrayList<Depense> getAllDepense(){
+        ArrayList<Depense> depenses= new ArrayList<>();
+        Cursor cursor=bdd.rawQuery("Select * from Depense",null);
+
+        if(cursor.moveToFirst()){
+            while(cursor.isAfterLast()==false){
+                Depense depense= new Depense();
+                depense.setNom(cursor.getString(NUM_COL_NOM));
+                depense.setMontant(cursor.getFloat(NUM_COL_MONTANT));
+                depenses.add(depense);
+                cursor.moveToNext();
+            }
+        }
+        return depenses;
+    }
+
+    public ArrayList<Revenu> getAllRevenus(){
+        ArrayList<Revenu> revenus= new ArrayList<>();
+        Cursor cursor=bdd.rawQuery("Select * from Revenu",null);
+
+        if(cursor.moveToFirst()){
+            while(cursor.isAfterLast()==false){
+                Revenu revenu= new Revenu();
+                revenu.setNom(cursor.getString(NUM_COL_NOM));
+                revenu.setMontant(cursor.getFloat(NUM_COL_MONTANT));
+                revenus.add(revenu);
+                cursor.moveToNext();
+            }
+        }
+        return revenus;
+    }
+
     private Depense cursorToDepense(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
@@ -113,7 +151,6 @@ public class BDDManager {
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();
-        //On créé un livre
         Depense depense = new Depense();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         depense.setId(c.getInt(NUM_COL_ID));
@@ -124,8 +161,27 @@ public class BDDManager {
         //On ferme le cursor
         c.close();
 
-        //On retourne le livre
         return depense;
+    }
+
+    private Revenu cursorToRevenu(Cursor c){
+        //si aucun élément n'a été retourné dans la requête, on renvoie null
+        if (c.getCount() == 0)
+            return null;
+
+        //Sinon on se place sur le premier élément
+        c.moveToFirst();
+        Revenu revenu = new Revenu();
+        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+        revenu.setId(c.getInt(NUM_COL_ID));
+
+        revenu.setNom(c.getString(NUM_COL_NOM));
+        revenu.setCategorie(c.getString(NUM_COL_CATEGORIE));
+        revenu.setMontant(c.getFloat(NUM_COL_MONTANT));
+        //On ferme le cursor
+        c.close();
+
+        return revenu;
     }
 
 }
