@@ -61,7 +61,7 @@ public class BDDManager {
         values.put(COL_DATE, dateFormat.format(expenditure.getDate()));
         values.put(COL_NOM, expenditure.getNom());
         values.put(COL_MONTANT, expenditure.getMontant());
-        return bdd.insert(TABLE_DEPENSES, null, values);
+        return bdd.insertOrThrow(TABLE_DEPENSES, null, values);
     }
 
     public long insertRevenu(Income revenus){
@@ -71,7 +71,7 @@ public class BDDManager {
         values.put(COL_DATE, dateFormat.format(revenus.getDate()));
         values.put(COL_NOM, revenus.getNom());
         values.put(COL_MONTANT, revenus.getMontant());
-        return bdd.insert(TABLE_REVENUS, null, values);
+        return bdd.insertOrThrow(TABLE_REVENUS, null, values);
     }
 
     public int updateDepense(int id, Expenditure expenditure){
@@ -99,7 +99,7 @@ public class BDDManager {
     }
 
     public int removeRevenuWithID(int id){
-        return bdd.delete(TABLE_DEPENSES, COL_ID + " = " +id, null);
+        return bdd.delete(TABLE_REVENUS, COL_ID + " = " +id, null);
     }
 
     public Expenditure getDepenseWithNom(String nom){
