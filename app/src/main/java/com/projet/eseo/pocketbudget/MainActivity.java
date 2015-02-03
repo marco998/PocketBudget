@@ -16,8 +16,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BDDManager bddm= new BDDManager(this);
-        Expenditure depense= new Expenditure();
-        bddm.open();
+
     }
 
 

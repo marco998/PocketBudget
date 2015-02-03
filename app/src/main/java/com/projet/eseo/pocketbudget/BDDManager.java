@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class BDDManager {
 
-    private static final int VERSION_BDD = 1;
+    private static final int VERSION_BDD = 6;
     private static final String NOM_BDD = "budget.db";
 
     private static final String TABLE_DEPENSES = "table_depenses";
@@ -114,7 +114,7 @@ public class BDDManager {
 
     public ArrayList<Expenditure> getAllDepense(){
         ArrayList<Expenditure> expenditures = new ArrayList<>();
-        Cursor cursor=bdd.rawQuery("Select * from Expenditure",null);
+        Cursor cursor=bdd.rawQuery("Select * from table_depenses",null);
 
         if(cursor.moveToFirst()){
             do{
@@ -130,7 +130,7 @@ public class BDDManager {
 
     public ArrayList<Income> getAllRevenus(){
         ArrayList<Income> incomes = new ArrayList<>();
-        Cursor cursor=bdd.rawQuery("Select * from Income",null);
+        Cursor cursor=bdd.rawQuery("Select * from table_revenus",null);
 
         if(cursor.moveToFirst()){
             while(!cursor.isAfterLast()){

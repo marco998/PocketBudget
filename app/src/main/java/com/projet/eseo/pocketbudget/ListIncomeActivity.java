@@ -20,7 +20,7 @@ public class ListIncomeActivity extends ActionBarActivity {
         listView=(ListView)findViewById(R.id.listViewRevenus);
 
         BDDManager bdd= new BDDManager(this);
-
+        bdd.open();
         ArrayList<Income> listString = bdd.getAllRevenus();
         StringAdapter adapter =
                 new StringAdapter(getApplicationContext(), listString);

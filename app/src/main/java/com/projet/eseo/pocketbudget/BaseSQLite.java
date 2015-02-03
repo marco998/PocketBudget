@@ -12,18 +12,18 @@ public class BaseSQLite extends SQLiteOpenHelper{
 
     private static final String COL_ID="ID";
     private static final String TABLE_DEPENSES= "table_depenses";
-    private static final String TABLE_REVENUS= "table_depenses";
+    private static final String TABLE_REVENUS= "table_revenus";
     private static final String COL_DATE="DATE";
     private static final String COL_NOM= "NOM";
     private static final String COL_CATEGORIE="CATEGORIE";
     private static final String COL_MONTANT= "MONTANT";
 
-    private static final String CREATE_BDD = "CREATE TABLE " + TABLE_DEPENSES + " ("
+    private static final String CREATE_TABLE_DEPENSES = "CREATE TABLE " + TABLE_DEPENSES + " ("
             + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DATE + " TEXT NOT NULL,"
-            + COL_CATEGORIE+"TEXT NOT NULL,"+COL_NOM+"TEXT NOT NULL,"+COL_MONTANT+"TEXT NOT NULL);"
-            +" CREATE TABLE "+ TABLE_REVENUS+ "("
+            + COL_CATEGORIE+" TEXT NOT NULL,"+COL_NOM+" TEXT NOT NULL,"+COL_MONTANT+" TEXT NOT NULL);";
+    private static final String CREATE_TABLE_REVENUS = " CREATE TABLE "+ TABLE_REVENUS+ " ( "
             + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_DATE + " TEXT NOT NULL,"
-            + COL_CATEGORIE+"TEXT NOT NULL,"+COL_NOM+"TEXT NOT NULL,"+COL_MONTANT+"TEXT NOT NULL);";
+            + COL_CATEGORIE+" TEXT NOT NULL,"+COL_NOM+" TEXT NOT NULL,"+COL_MONTANT+" TEXT NOT NULL);";
 
 
     public BaseSQLite(Context context, String name, CursorFactory factory, int version) {
@@ -33,7 +33,8 @@ public class BaseSQLite extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         //on créé la table à partir de la requête écrite dans la variable CREATE_BDD
-        db.execSQL(CREATE_BDD);
+        db.execSQL(CREATE_TABLE_DEPENSES);
+        db.execSQL(CREATE_TABLE_REVENUS);
     }
 
     @Override
