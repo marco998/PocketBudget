@@ -4,16 +4,28 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
-import android.view.View;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
-public class MainActivity extends ActionBarActivity {
+public class ListIncomeActivity extends ActionBarActivity {
+
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_list_incomes);
+        listView=(ListView)findViewById(R.id.listViewRevenus);
+
+        BDDManager bdd= new BDDManager(this);
+
+        ArrayList<Income> listString = bdd.getAllRevenus();
+        StringAdapter adapter =
+                new StringAdapter(getApplicationContext(), listString);
+
+        listView.setAdapter(adapter);
 
     }
 
@@ -21,15 +33,9 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_list_income, menu);
         return true;
     }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -44,24 +50,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void goToIncomeList(View view)
-    {
-        Intent intent = new Intent(this, ListIncomeActivity.class);
-        startActivity(intent);
-    }
-
-
-    public void goToNewIncome(View view)
-    {
-        Intent intent = new Intent(this, NewIncomeActivity.class);
-        startActivity(intent);
-    }
-
-    public void goToNewExpenditure(View view)
-    {
-        Intent intent = new Intent(this, NewExpenditureActivity.class);
-        startActivity(intent);
     }
 }

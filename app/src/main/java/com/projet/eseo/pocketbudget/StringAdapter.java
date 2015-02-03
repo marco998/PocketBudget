@@ -12,10 +12,10 @@ import java.util.ArrayList;
  * Created by marc-antoine on 03/02/15.
  */
 public class StringAdapter extends BaseAdapter {
-    ArrayList<Revenu> data;
+    ArrayList<Income> data;
     LayoutInflater inflater;
 
-    public StringAdapter(Context context,ArrayList<Revenu> data) {
+    public StringAdapter(Context context,ArrayList<Income> data) {
         inflater = LayoutInflater.from(context);
         this.data = data;
     }
@@ -43,7 +43,7 @@ public class StringAdapter extends BaseAdapter {
         if(convertView == null) {
             holder = new ViewHolder();
             // On lie les éléments au fichier ligne_de_la_listview.xml
-            convertView = inflater.inflate(R.layout.activity_list_revenus_items, null);
+            convertView = inflater.inflate(R.layout.activity_list_incomes_items, null);
             // On lie les deux TextView déclarés précédemment à ceux du xml
             holder.nomElement = (TextView)convertView.findViewById(R.id.nom);
             holder.montantElement = (TextView)convertView.findViewById(R.id.montant);
@@ -52,8 +52,8 @@ public class StringAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         // On défini ici le texte que doit contenir chacun des TextView
-        holder.nomElement.setText(((Revenu)this.getItem(position)).getNom());
-        holder.montantElement.setText(String.valueOf(((Revenu) this.getItem(position)).getMontant()));
+        holder.nomElement.setText(((Income)this.getItem(position)).getNom());
+        holder.montantElement.setText(String.valueOf(((Income) this.getItem(position)).getMontant()));
         return convertView;
     }
 

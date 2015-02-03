@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by marc-antoine on 02/02/15.
  */
-public class Depense {
+public class Expenditure {
 
     private int id;
     private Date date;
@@ -13,9 +13,9 @@ public class Depense {
     private String nom;
     private float montant;
 
-    public Depense(){}
+    public Expenditure(){}
 
-    public Depense(Date date, String categorie, String nom, float montant){
+    public Expenditure(Date date, String categorie, String nom, float montant){
         this.date=date;
         this.categorie=categorie;
         this.nom=nom;

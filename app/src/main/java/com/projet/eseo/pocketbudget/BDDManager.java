@@ -54,17 +54,17 @@ public class BDDManager {
         return bdd;
     }
 
-    public long insertDepense(Depense depense){
+    public long insertDepense(Expenditure expenditure){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ContentValues values = new ContentValues();
-        values.put(COL_CATEGORIE, depense.getCategorie());
-        values.put(COL_DATE, dateFormat.format(depense.getDate()));
-        values.put(COL_NOM, depense.getNom());
-        values.put(COL_MONTANT, depense.getMontant());
+        values.put(COL_CATEGORIE, expenditure.getCategorie());
+        values.put(COL_DATE, dateFormat.format(expenditure.getDate()));
+        values.put(COL_NOM, expenditure.getNom());
+        values.put(COL_MONTANT, expenditure.getMontant());
         return bdd.insert(TABLE_DEPENSES, null, values);
     }
 
-    public long insertRevenu(Revenu revenus){
+    public long insertRevenu(Income revenus){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, revenus.getCategorie());
@@ -74,23 +74,23 @@ public class BDDManager {
         return bdd.insert(TABLE_REVENUS, null, values);
     }
 
-    public int updateDepense(int id, Depense depense){
+    public int updateDepense(int id, Expenditure expenditure){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ContentValues values = new ContentValues();
-        values.put(COL_CATEGORIE,depense.getCategorie());
-        values.put(COL_DATE,dateFormat.format(depense.getDate()));
-        values.put(COL_NOM, depense.getNom());
-        values.put(COL_MONTANT,depense.getMontant());
+        values.put(COL_CATEGORIE, expenditure.getCategorie());
+        values.put(COL_DATE,dateFormat.format(expenditure.getDate()));
+        values.put(COL_NOM, expenditure.getNom());
+        values.put(COL_MONTANT, expenditure.getMontant());
         return bdd.update(TABLE_DEPENSES, values, COL_ID + " = " +id, null);
     }
 
-    public int updateRevenus(int id, Revenu revenu){
+    public int updateRevenus(int id, Income income){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ContentValues values = new ContentValues();
-        values.put(COL_CATEGORIE,revenu.getCategorie());
-        values.put(COL_DATE,dateFormat.format(revenu.getDate()));
-        values.put(COL_NOM, revenu.getNom());
-        values.put(COL_MONTANT,revenu.getMontant());
+        values.put(COL_CATEGORIE, income.getCategorie());
+        values.put(COL_DATE,dateFormat.format(income.getDate()));
+        values.put(COL_NOM, income.getNom());
+        values.put(COL_MONTANT, income.getMontant());
         return bdd.update(TABLE_REVENUS, values, COL_ID + " = " +id, null);
     }
 
@@ -102,86 +102,86 @@ public class BDDManager {
         return bdd.delete(TABLE_DEPENSES, COL_ID + " = " +id, null);
     }
 
-    public Depense getDepenseWithNom(String nom){
+    public Expenditure getDepenseWithNom(String nom){
         Cursor c = bdd.query(TABLE_DEPENSES, new String[] {COL_ID, COL_CATEGORIE, COL_DATE, COL_NOM,COL_MONTANT}, COL_NOM + " LIKE \"" + nom +"\"", null, null, null, null);
         return cursorToDepense(c);
     }
 
-    public Revenu getRevenuWithNom(String nom){
+    public Income getRevenuWithNom(String nom){
         Cursor c = bdd.query(TABLE_REVENUS, new String[] {COL_ID, COL_CATEGORIE, COL_DATE, COL_NOM,COL_MONTANT}, COL_NOM + " LIKE \"" + nom +"\"", null, null, null, null);
         return cursorToRevenu(c);
     }
 
-    public ArrayList<Depense> getAllDepense(){
-        ArrayList<Depense> depenses= new ArrayList<>();
-        Cursor cursor=bdd.rawQuery("Select * from Depense",null);
+    public ArrayList<Expenditure> getAllDepense(){
+        ArrayList<Expenditure> expenditures = new ArrayList<>();
+        Cursor cursor=bdd.rawQuery("Select * from Expenditure",null);
 
         if(cursor.moveToFirst()){
             while(cursor.isAfterLast()==false){
-                Depense depense= new Depense();
-                depense.setNom(cursor.getString(NUM_COL_NOM));
-                depense.setMontant(cursor.getFloat(NUM_COL_MONTANT));
-                depenses.add(depense);
+                Expenditure expenditure = new Expenditure();
+                expenditure.setNom(cursor.getString(NUM_COL_NOM));
+                expenditure.setMontant(cursor.getFloat(NUM_COL_MONTANT));
+                expenditures.add(expenditure);
                 cursor.moveToNext();
             }
         }
-        return depenses;
+        return expenditures;
     }
 
-    public ArrayList<Revenu> getAllRevenus(){
-        ArrayList<Revenu> revenus= new ArrayList<>();
-        Cursor cursor=bdd.rawQuery("Select * from Revenu",null);
+    public ArrayList<Income> getAllRevenus(){
+        ArrayList<Income> incomes = new ArrayList<>();
+        Cursor cursor=bdd.rawQuery("Select * from Income",null);
 
         if(cursor.moveToFirst()){
             while(!cursor.isAfterLast()){
-                Revenu revenu= new Revenu();
-                revenu.setNom(cursor.getString(NUM_COL_NOM));
-                revenu.setMontant(cursor.getFloat(NUM_COL_MONTANT));
-                revenus.add(revenu);
+                Income income = new Income();
+                income.setNom(cursor.getString(NUM_COL_NOM));
+                income.setMontant(cursor.getFloat(NUM_COL_MONTANT));
+                incomes.add(income);
                 cursor.moveToNext();
             }
         }
-        return revenus;
+        return incomes;
     }
 
-    private Depense cursorToDepense(Cursor c){
+    private Expenditure cursorToDepense(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
             return null;
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();
-        Depense depense = new Depense();
+        Expenditure expenditure = new Expenditure();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
-        depense.setId(c.getInt(NUM_COL_ID));
+        expenditure.setId(c.getInt(NUM_COL_ID));
 
-        depense.setNom(c.getString(NUM_COL_NOM));
-        depense.setCategorie(c.getString(NUM_COL_CATEGORIE));
-        depense.setMontant(c.getFloat(NUM_COL_MONTANT));
+        expenditure.setNom(c.getString(NUM_COL_NOM));
+        expenditure.setCategorie(c.getString(NUM_COL_CATEGORIE));
+        expenditure.setMontant(c.getFloat(NUM_COL_MONTANT));
         //On ferme le cursor
         c.close();
 
-        return depense;
+        return expenditure;
     }
 
-    private Revenu cursorToRevenu(Cursor c){
+    private Income cursorToRevenu(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
             return null;
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();
-        Revenu revenu = new Revenu();
+        Income income = new Income();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
-        revenu.setId(c.getInt(NUM_COL_ID));
+        income.setId(c.getInt(NUM_COL_ID));
 
-        revenu.setNom(c.getString(NUM_COL_NOM));
-        revenu.setCategorie(c.getString(NUM_COL_CATEGORIE));
-        revenu.setMontant(c.getFloat(NUM_COL_MONTANT));
+        income.setNom(c.getString(NUM_COL_NOM));
+        income.setCategorie(c.getString(NUM_COL_CATEGORIE));
+        income.setMontant(c.getFloat(NUM_COL_MONTANT));
         //On ferme le cursor
         c.close();
 
-        return revenu;
+        return income;
     }
 
 }
