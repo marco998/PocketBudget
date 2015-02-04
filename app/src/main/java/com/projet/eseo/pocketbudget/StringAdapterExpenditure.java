@@ -1,21 +1,22 @@
 package com.projet.eseo.pocketbudget;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.view.LayoutInflater;
-import android.content.Context;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
 /**
- * Created by marc-antoine on 03/02/15.
+ * Created by pierr_000 on 04/02/2015.
  */
-public class StringAdapter extends BaseAdapter {
-    ArrayList<Income> data;
+public class StringAdapterExpenditure extends BaseAdapter {
+    ArrayList<Expenditure> data;
     LayoutInflater inflater;
 
-    public StringAdapter(Context context,ArrayList<Income> data) {
+    public StringAdapterExpenditure(Context context,ArrayList<Expenditure> data) {
         inflater = LayoutInflater.from(context);
         this.data = data;
     }
@@ -43,7 +44,7 @@ public class StringAdapter extends BaseAdapter {
         if(convertView == null) {
             holder = new ViewHolder();
             // On lie les éléments au fichier ligne_de_la_listview.xml
-            convertView = inflater.inflate(R.layout.activity_list_incomes_item, null);
+            convertView = inflater.inflate(R.layout.activity_list_expenditures_item, null);
             // On lie les deux TextView déclarés précédemment à ceux du xml
             holder.nomElement = (TextView)convertView.findViewById(R.id.nom);
             holder.montantElement = (TextView)convertView.findViewById(R.id.montant);
@@ -52,8 +53,8 @@ public class StringAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         // On défini ici le texte que doit contenir chacun des TextView
-        holder.nomElement.setText(((Income)this.getItem(position)).getNom());
-        holder.montantElement.setText(String.valueOf(((Income) this.getItem(position)).getMontant()));
+        holder.nomElement.setText(((Expenditure)this.getItem(position)).getNom());
+        holder.montantElement.setText(String.valueOf(((Expenditure) this.getItem(position)).getMontant()));
         return convertView;
     }
 

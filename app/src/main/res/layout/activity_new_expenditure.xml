@@ -32,24 +32,33 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:id="@+id/date_layout"
-            android:layout_weight="0.05"
+            android:weightSum="1"
             android:layout_marginBottom="50dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="49dp"
+                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/date_expenditure"
+                android:ems="10"
                 android:id="@+id/date_depense_textView"
-                android:textSize="30dp" />
+                android:textSize="30sp"
+                android:layout_weight="1" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="date"
                 android:ems="10"
-                android:id="@+id/date_depense_editText"
+                android:id="@+id/displayDate"
                 android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="47dp"
+                android:layout_height="45dp"
+                android:src="@drawable/calendar"
+                android:id="@+id/pickDate"/>
+
         </LinearLayout>
 
         <LinearLayout

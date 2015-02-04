@@ -57,8 +57,10 @@ public class BDDManager {
     public long insertDepense(Expenditure expenditure){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         ContentValues values = new ContentValues();
+
         values.put(COL_CATEGORIE, expenditure.getCategorie());
         values.put(COL_DATE, dateFormat.format(expenditure.getDate()));
+        values.put(COL_DATE, "12-12-12");
         values.put(COL_NOM, expenditure.getNom());
         values.put(COL_MONTANT, expenditure.getMontant());
         return bdd.insertOrThrow(TABLE_DEPENSES, null, values);
@@ -69,13 +71,14 @@ public class BDDManager {
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, revenus.getCategorie());
         values.put(COL_DATE, dateFormat.format(revenus.getDate()));
+        values.put(COL_DATE, "12-12-12");
         values.put(COL_NOM, revenus.getNom());
         values.put(COL_MONTANT, revenus.getMontant());
         return bdd.insertOrThrow(TABLE_REVENUS, null, values);
     }
 
     public int updateDepense(int id, Expenditure expenditure){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, expenditure.getCategorie());
         values.put(COL_DATE,dateFormat.format(expenditure.getDate()));

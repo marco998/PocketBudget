@@ -30,7 +30,6 @@
         <item>REVENUS COMPLEMENTAIRES</item>
         <item>CADEAUX</item>
     </string-array>
-
     <string-array name="categories_list_expenditure">
         <item>LOGEMENT</item>
         <item>TRANSPORT</item>
@@ -45,5 +44,6 @@
 
     <string name="title_activity_list_expenditure">ListExpenditureActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:background="#ff61c3ff">
+    android:background="#f5191970"
+    >
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,7 +13,8 @@
         android:layout_height="fill_parent"
         android:weightSum="1"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        >
 
         <Button
             android:layout_width="match_parent"
@@ -22,7 +24,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="5dp"
-            android:onClick="goToIncomeList"/>
+            android:onClick="goToIncomeList"
+            android:background="#ffb0dfff" />
 
         <Button
             android:layout_width="match_parent"
@@ -31,7 +34,8 @@
             android:id="@+id/expenditure_button_main"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="50dp"
-            android:onClick="goToExpenditureList"/>
+            android:onClick="goToExpenditureList"
+            android:background="#ffb0dfff" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -66,7 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="@string/statistics_butn"
-            android:id="@+id/statistics_button" />
+            android:id="@+id/statistics_button"
+            android:background="#ffb0dfff" />
 
     </LinearLayout>
 

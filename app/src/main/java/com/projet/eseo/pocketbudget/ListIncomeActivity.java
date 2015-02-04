@@ -24,15 +24,23 @@ public class ListIncomeActivity extends ActionBarActivity {
 
         BDDManager bdd= new BDDManager(this);
         bdd.open();
-        Income income= new Income(new Date(12,01,2012),"Test","Revenu",1000);
-        bdd.insertRevenu(income);
         ArrayList<Income> listString = bdd.getAllRevenus();
         StringAdapter adapter = new StringAdapter(getApplicationContext(), listString);
 
         listView.setAdapter(adapter);
-
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        BDDManager bdd= new BDDManager(this);
+        bdd.open();
+        ArrayList<Income> listString = bdd.getAllRevenus();
+        StringAdapter adapter = new StringAdapter(getApplicationContext(), listString);
+
+        listView.setAdapter(adapter);
+        bdd.close();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

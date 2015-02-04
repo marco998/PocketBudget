@@ -6,15 +6,44 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public class ListExpenditureActivity extends ActionBarActivity {
+
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_expenditure);
+
+        listView=(ListView)findViewById(R.id.listViewDepenses);
+
+        BDDManager bdd= new BDDManager(this);
+        bdd.open();
+        ArrayList<Expenditure> listString = bdd.getAllDepense();
+        StringAdapterExpenditure adapter = new StringAdapterExpenditure(getApplicationContext(), listString);
+
+        listView.setAdapter(adapter);
+        bdd.close();
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BDDManager bdd= new BDDManager(this);
+        bdd.open();
+        ArrayList<Expenditure> listString = bdd.getAllDepense();
+        StringAdapterExpenditure adapter = new StringAdapterExpenditure(getApplicationContext(), listString);
+
+        listView.setAdapter(adapter);
+        bdd.close();
+    }
+
 
 
     @Override
