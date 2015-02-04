@@ -88,7 +88,7 @@ public class BDDManager {
     }
 
     public int updateRevenus(long id, Income income){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, income.getCategorie());
         //values.put(COL_DATE,dateFormat.format(income.getDate()));

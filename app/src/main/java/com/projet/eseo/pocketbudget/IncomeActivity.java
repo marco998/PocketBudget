@@ -129,7 +129,7 @@ public class IncomeActivity extends ActionBarActivity {
     public void updateIncome(View view){
         Income newIncome = new Income();
 
-        //date = (EditText) findViewById((R.id.displayDate));
+        date = (EditText) findViewById((R.id.displayDate));
         categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
         nom = (EditText) findViewById(R.id.nom_revenu_ediText);
         montant = (EditText) findViewById(R.id.montant_revenu_editText);
@@ -150,7 +150,6 @@ public class IncomeActivity extends ActionBarActivity {
 
     @Override
     protected void onResume(){
-
         super.onResume();
     }
 
@@ -176,39 +175,4 @@ public class IncomeActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-    public void addNewIncome(View view){
-
-        date = (EditText) findViewById(R.id.date_depense_textView);
-
-        categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
-        nom = (EditText) findViewById(R.id.name_income);
-        montant = (EditText) findViewById(R.id.montant_income);
-
-        String dateDepense = date.getText().toString();
-        String categorieDepense = categories_income_spinner.getSelectedItem().toString();
-        String nomDepense = nom.getText().toString();
-        float montantDepense =  Float.parseFloat(montant.getText().toString());
-
-
-        Context context = getApplicationContext();
-        CharSequence text = "Date = "+dateDepense+" - Categorie : "+categorieDepense+" - Nom : "+nomDepense+" - Montant : "+montantDepense;
-        int duration = Toast.LENGTH_LONG;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-
-        Income newIncome = new Income();
-        newIncome.setCategorie(categorieDepense);
-        newIncome.setMontant(montantDepense);
-        newIncome.setNom(nomDepense);
-        newIncome.setDate(dateDepense);
-
-        BDDManager bddManager = new BDDManager(this);
-        bddManager.open();
-        bddManager.insertRevenu(newIncome);
-        bddManager.close();
-
-    }
 }

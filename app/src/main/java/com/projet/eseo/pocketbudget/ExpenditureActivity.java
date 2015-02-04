@@ -2,6 +2,7 @@ package com.projet.eseo.pocketbudget;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class ExpenditureActivity extends ActionBarActivity {
     private int pYear;
     private int pMonth;
     private int pDay;
+    private long id;
     static final int DATE_DIALOG_ID = 0;
 
     @Override
@@ -69,7 +71,8 @@ public class ExpenditureActivity extends ActionBarActivity {
         updateDisplay();
 
         Intent intent = getIntent();
-        long id = intent.getExtras().getLong("ID");
+        id = intent.getExtras().getLong("ID");
+        Toast.makeText(getApplicationContext(), "testCREATE : "+id,Toast.LENGTH_LONG).show();
         Toast.makeText(getApplicationContext(), "test : "+id,Toast.LENGTH_LONG).show();
         Expenditure expenditure = new Expenditure();
         BDDManager bdd = new BDDManager(this);
@@ -149,5 +152,28 @@ public class ExpenditureActivity extends ActionBarActivity {
                         pYear, pMonth, pDay);
         }
         return null;
+    }
+
+    public void updateExpenditure(View view){
+        Expenditure newExpenditure = new Expenditure();
+
+        date = (EditText) findViewById((R.id.displayDate));
+        categories_expenditure_spinner = (Spinner) findViewById(R.id.categories_depense_spinner);
+        nom = (EditText) findViewById(R.id.nom_depense_editText);
+        montant = (EditText) findViewById(R.id.montant_depense_editText);
+
+        if(!categories_expenditure_spinner.getSelectedItem().toString().equals("")
+                && !nom.getText().toString().equals("")
+                && Float.parseFloat(montant.getText().toString()) != 0){
+
+            newExpenditure.setCategorie(categories_expenditure_spinner.getSelectedItem().toString());
+            newExpenditure.setNom(nom.getText().toString());
+            newExpenditure.setMontant(Float.parseFloat(montant.getText().toString()));
+
+            BDDManager bdd = new BDDManager(this);
+            bdd.open();
+            bdd.updateDepense(id,newExpenditure);
+        }
+        Toast.makeText(getApplicationContext(), "test : MODIIIFF"+id,Toast.LENGTH_LONG).show();
     }
 }
