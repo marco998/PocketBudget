@@ -46,8 +46,8 @@ public class ListIncomeActivity extends ActionBarActivity {
 
     @Override
     public void onResume(){
-        /*super.onResume();
-        BDDManager bdd= new BDDManager(this);
+        super.onResume();
+        /*BDDManager bdd= new BDDManager(this);
         bdd.open();
         ArrayList<Income> listString = bdd.getAllRevenus();
         StringAdapter adapter = new StringAdapter(getApplicationContext(), listString);

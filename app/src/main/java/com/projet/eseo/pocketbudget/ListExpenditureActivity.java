@@ -66,7 +66,7 @@ public class ListExpenditureActivity extends ActionBarActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int value=bdd.removeDepenseWithID(position+1);
-                        Toast.makeText(ListExpenditureActivity.this, String.valueOf(), Toast.LENGTH_LONG).show();
+
                     }
                 });
                 builder.setNegativeButton(R.string.dialog_delete_no, new DialogInterface.OnClickListener(){
