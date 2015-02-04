@@ -30,11 +30,13 @@ public class ListExpenditureActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_expenditure);
+
         listView=(ListView)findViewById(R.id.listViewExpenditure);
 
         final BDDManager bdd= new BDDManager(this);
         bdd.open();
-
+        Expenditure expenditure= new Expenditure(new Date(12,01,2012),"Test","Revenu",1000);
+        expenditure.setId(bdd.insertDepense(expenditure));
         final ArrayList<Expenditure> listString = bdd.getAllDepense();
 
         ArrayAdapter<Expenditure> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, android.R.id.text1, listString) {
@@ -78,15 +80,6 @@ public class ListExpenditureActivity extends ActionBarActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 return true;
-            }
-        });
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
-                Intent intent = new Intent(getApplicationContext(), ExpenditureActivity.class);
-                intent.putExtra("ID",listString.get(position).getId());
-                startActivity(intent);
             }
         });
     }

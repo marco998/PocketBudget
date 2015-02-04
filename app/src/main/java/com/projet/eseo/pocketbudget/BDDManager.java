@@ -68,7 +68,7 @@ public class BDDManager {
     }
 
     public long insertRevenu(Income revenus){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, revenus.getCategorie());
         values.put(COL_DATE, dateFormat.format(revenus.getDate()));
@@ -107,13 +107,13 @@ public class BDDManager {
         return bdd.delete(TABLE_REVENUS, COL_ID + " = " +id, null);
     }
 
-    public Expenditure getDepenseWithId(long id){
-        Cursor c = bdd.query(TABLE_DEPENSES, new String[] {COL_ID, COL_DATE,COL_CATEGORIE, COL_NOM,COL_MONTANT}, COL_ID + " LIKE \"" + id +"\"", null, null, null, null);
+    public Expenditure getDepenseWithNom(String nom){
+        Cursor c = bdd.query(TABLE_DEPENSES, new String[] {COL_ID, COL_CATEGORIE, COL_DATE, COL_NOM,COL_MONTANT}, COL_NOM + " LIKE \"" + nom +"\"", null, null, null, null);
         return cursorToDepense(c);
     }
 
-    public Income getRevenuWithId(long id){
-        Cursor c = bdd.query(TABLE_REVENUS, new String[] {COL_ID, COL_DATE, COL_CATEGORIE, COL_NOM,COL_MONTANT}, COL_ID + " LIKE \"" + id +"\"", null, null, null, null);
+    public Income getRevenuWithNom(String nom){
+        Cursor c = bdd.query(TABLE_REVENUS, new String[] {COL_ID, COL_CATEGORIE, COL_DATE, COL_NOM,COL_MONTANT}, COL_NOM + " LIKE \"" + nom +"\"", null, null, null, null);
         return cursorToRevenu(c);
     }
 
@@ -126,7 +126,6 @@ public class BDDManager {
                 Expenditure expenditure = new Expenditure();
                 expenditure.setNom(cursor.getString(NUM_COL_NOM));
                 expenditure.setMontant(cursor.getFloat(NUM_COL_MONTANT));
-                expenditure.setId(cursor.getLong(NUM_COL_ID));
                 expenditures.add(expenditure);
                 cursor.moveToNext();
             }while(cursor.isAfterLast()==false);
@@ -143,7 +142,6 @@ public class BDDManager {
                 Income income = new Income();
                 income.setNom(cursor.getString(NUM_COL_NOM));
                 income.setMontant(cursor.getFloat(NUM_COL_MONTANT));
-                income.setId(cursor.getLong(NUM_COL_ID));
                 incomes.add(income);
                 cursor.moveToNext();
             }

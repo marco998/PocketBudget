@@ -28,6 +28,7 @@ public class NewExpenditureActivity extends ActionBarActivity {
     private EditText nom;
     private EditText montant;
 
+
     private TextView pDisplayDate;
     private ImageButton pPickDate;
     private int pYear;

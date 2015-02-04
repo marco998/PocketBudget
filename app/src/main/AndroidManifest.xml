@@ -46,10 +46,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.projet.eseo.pocketbudget.ListExpenditureActivity" />
         </activity>
-        <activity
-            android:name=".IncomeActivity"
-            android:label="@string/title_activity_income" >
-        </activity>
     </application>
 
 </manifest>
