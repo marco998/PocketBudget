@@ -5,8 +5,9 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="600dp"
-        android:id="@+id/listViewRevenus"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewExpenditure"
+        android:layout_above="@+id/add_income_button"
         />
 
     <Button
