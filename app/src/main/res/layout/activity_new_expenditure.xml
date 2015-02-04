@@ -71,7 +71,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/categories_expenditure_spinner" />
+                android:id="@+id/categories_depense_spinner"
+                android:spinnerMode="dialog" />
 
         </LinearLayout>
 
@@ -96,10 +97,16 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:ems="10"
-                android:id="@+id/date_depense"
+                android:id="@+id/nom_depense_editText"
                 android:layout_weight="1" />
 
         </LinearLayout>
+
+        <CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/calendarView2"
+            android:layout_gravity="center_horizontal" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -133,6 +140,20 @@
             android:text="@string/validate_button"
             android:textSize="25dp"
             android:id="@+id/valider_button"
+            android:layout_gravity="center_horizontal"
+            android:onClick="addNewExpenditure"
+            />
+
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/datePicker"
+            android:layout_gravity="center_horizontal" />
+
+        <CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/calendarView"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>

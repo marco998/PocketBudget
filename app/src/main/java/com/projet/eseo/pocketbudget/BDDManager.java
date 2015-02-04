@@ -55,7 +55,7 @@ public class BDDManager {
     }
 
     public long insertDepense(Expenditure expenditure){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, expenditure.getCategorie());
         values.put(COL_DATE, dateFormat.format(expenditure.getDate()));
