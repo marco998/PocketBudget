@@ -19,8 +19,8 @@ public class ListIncomeActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_incomes);
-        listView=(ListView)findViewById(R.id.listViewRevenus);
+        setContentView(R.layout.activity_list_income);
+        listView=(ListView)findViewById(R.id.listViewIncomes);
 
         BDDManager bdd= new BDDManager(this);
         bdd.open();
