@@ -92,10 +92,10 @@ public class NewExpenditureActivity extends ActionBarActivity {
        }catch(Exception e){
        }
 
-       BDDManager bddManager = new BDDManager(this);
+      /* BDDManager bddManager = new BDDManager(this);
        bddManager.open();
        bddManager.insertDepense(newExpenditur);
-       bddManager.close();
+       bddManager.close();*/
 
 
     }
