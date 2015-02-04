@@ -1,29 +1,21 @@
 package com.projet.eseo.pocketbudget;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.Context;
+import android.app.DatePickerDialog;import android.app.Dialog;import android.app.DialogFragment;import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
-import android.widget.EditText;
+import android.view.View;import android.widget.ArrayAdapter;
+import android.widget.Button;import android.widget.DatePicker;import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import android.widget.Spinner;import android.widget.TextView;import android.widget.Toast;import java.text.SimpleDateFormat;import java.util.Calendar;
 
 
-public class NewExpenditureActivity extends ActionBarActivity {
+public class IncomeActivity extends ActionBarActivity {
 
-    private ArrayAdapter<CharSequence> categories_adapter;
-    private Spinner categories_expenditure_spinner;
+    private ArrayAdapter<CharSequence> categories_income_adapter;
+    private Spinner categories_income_spinner;
     private EditText date;
     private EditText nom;
     private EditText montant;
@@ -73,12 +65,12 @@ public class NewExpenditureActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_expenditure);
+        setContentView(R.layout.activity_income);
 
-        categories_expenditure_spinner = (Spinner) findViewById(R.id.categories_depense_spinner);
-        categories_adapter = ArrayAdapter.createFromResource(this,R.array.categories_list_expenditure,android.R.layout.simple_spinner_item);
-        categories_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categories_expenditure_spinner.setAdapter(categories_adapter);
+        categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
+        categories_income_adapter = ArrayAdapter.createFromResource(this, R.array.categories_list_income, android.R.layout.simple_spinner_item);
+        categories_income_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categories_income_spinner.setAdapter(categories_income_adapter);
 
         /** Capture our View elements */
         pDisplayDate = (TextView) findViewById(R.id.displayDate);
@@ -102,16 +94,17 @@ public class NewExpenditureActivity extends ActionBarActivity {
 
     }
 
-    @Override
-         protected void onResume(){
-            super.onResume();
-        }
 
+    @Override
+    protected void onResume(){
+
+        super.onResume();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_new_expenditure, menu);
+        getMenuInflater().inflate(R.menu.menu_new_income, menu);
         return true;
     }
 
@@ -126,42 +119,49 @@ public class NewExpenditureActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
-   public void addNewExpenditure(View view){
-       date = (EditText) findViewById(R.id.displayDate);
-       categories_expenditure_spinner = (Spinner) findViewById(R.id.categories_depense_spinner);
-       nom = (EditText) findViewById(R.id.nom_depense_editText);
-       montant = (EditText) findViewById(R.id.montant_depense_editText);
-
-       String dateDepense = date.getText().toString();
-       String categorieDepense = categories_expenditure_spinner.getSelectedItem().toString();
-       String nomDepense = nom.getText().toString();
-       float montantDepense =  Float.parseFloat(montant.getText().toString());
 
 
-       Context context = getApplicationContext();
-       CharSequence text = "Date = "+dateDepense+" - Categorie : "+categorieDepense+" - Nom : "+nomDepense+" - Montant : "+montantDepense;
-       int duration = Toast.LENGTH_LONG;
+    public void addNewIncome(View view){
+        /*
+        date = (EditText) findViewById(R.id.date_depense);
 
-       Toast toast = Toast.makeText(context, text, duration);
-       toast.show();
+        categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
+        nom = (EditText) findViewById(R.id.name_income);
+        montant = (EditText) findViewById(R.id.montant_income);
 
-       Expenditure newExpenditur = new Expenditure();
-       newExpenditur.setCategorie(categorieDepense);
-       newExpenditur.setMontant(montantDepense);
-       newExpenditur.setNom(nomDepense);
+        String dateDepense = date.getText().toString();
+        String categorieDepense = categories_income_spinner.getSelectedItem().toString();
+        String nomDepense = nom.getText().toString();
+        float montantDepense =  Float.parseFloat(montant.getText().toString());
 
-       SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-       try{
-           newExpenditur.setDate(formatter.parse(dateDepense));
-       }catch(Exception e){
-       }
 
-       BDDManager bddManager = new BDDManager(this);
-       bddManager.open();
-       bddManager.insertDepense(newExpenditur);
-       bddManager.close();
+        Context context = getApplicationContext();
+        CharSequence text = "Date = "+dateDepense+" - Categorie : "+categorieDepense+" - Nom : "+nomDepense+" - Montant : "+montantDepense;
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+        Income newIncome = new Income();
+        newIncome.setCategorie(categorieDepense);
+        newIncome.setMontant(montantDepense);
+        newIncome.setNom(nomDepense);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        try{
+            newIncome.setDate(formatter.parse(dateDepense));
+        }catch(Exception e){
+        }
+
+        BDDManager bddManager = new BDDManager(this);
+        bddManager.open();
+        bddManager.insertRevenu(newIncome);
+        bddManager.close();
+
+        */
     }
 }
