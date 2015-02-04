@@ -38,6 +38,14 @@
             android:name=".ListExpenditureActivity"
             android:label="@string/title_activity_list_expenditure" >
         </activity>
+        <activity
+            android:name=".ExpenditureActivity"
+            android:label="@string/title_activity_expenditure"
+            android:parentActivityName=".ListExpenditureActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.projet.eseo.pocketbudget.ListExpenditureActivity" />
+        </activity>
     </application>
 
 </manifest>

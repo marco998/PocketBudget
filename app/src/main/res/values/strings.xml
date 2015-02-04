@@ -24,6 +24,10 @@
     <string name="add_income_butn">Ajouter nouveau revenu</string>
     <string name="add_expenditure_butn">Ajouter nouvelle dépense</string>
     <string name="statistics_butn">Voir statistiques</string>
+    <string name="dialog_delete_title">Supprimer l\'élément</string>
+    <string name="dialog_delete_message">L\'action de suppression est irréversible</string>
+    <string name="dialog_delete_yes">Supprimer</string>
+    <string name="dialog_delete_no">Annuler</string>
 
     <string-array name="categories_list_income">
         <item>SALAIRE</item>
@@ -45,5 +49,7 @@
     <string name="title_activity_list_expenditure">ListExpenditureActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_expenditure">ExpenditureActivity</string>
+
 
 </resources>

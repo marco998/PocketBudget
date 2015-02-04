@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,27 +22,38 @@ public class ListIncomeActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_incomes);
-        listView=(ListView)findViewById(R.id.listViewRevenus);
+        setContentView(R.layout.activity_list_expenditure);
+        listView=(ListView)findViewById(R.id.listViewExpenditure);
 
         BDDManager bdd= new BDDManager(this);
         bdd.open();
-        ArrayList<Income> listString = bdd.getAllRevenus();
-        StringAdapter adapter = new StringAdapter(getApplicationContext(), listString);
+        final ArrayList<Income> listString = bdd.getAllRevenus();
+        ArrayAdapter<Expenditure> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, android.R.id.text1, listString) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+
+                text1.setText(listString.get(position).getNom());
+                text2.setText(String.valueOf(listString.get(position).getMontant()));
+                return view;
+            }
+        };
 
         listView.setAdapter(adapter);
     }
 
     @Override
     public void onResume(){
-        super.onResume();
+        /*super.onResume();
         BDDManager bdd= new BDDManager(this);
         bdd.open();
         ArrayList<Income> listString = bdd.getAllRevenus();
         StringAdapter adapter = new StringAdapter(getApplicationContext(), listString);
 
         listView.setAdapter(adapter);
-        bdd.close();
+        bdd.close();*/
     }
 
     @Override
