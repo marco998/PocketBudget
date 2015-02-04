@@ -126,7 +126,9 @@ public class BDDManager {
                 Expenditure expenditure = new Expenditure();
                 expenditure.setNom(cursor.getString(NUM_COL_NOM));
                 expenditure.setMontant(cursor.getFloat(NUM_COL_MONTANT));
+                expenditure.setCategorie(cursor.getString(NUM_COL_CATEGORIE));
                 expenditure.setId(cursor.getLong(NUM_COL_ID));
+                //expenditure.setDate(cursor.getString(NUM_COL_DATE));
                 expenditures.add(expenditure);
                 cursor.moveToNext();
             }while(cursor.isAfterLast()==false);
@@ -161,7 +163,6 @@ public class BDDManager {
         Expenditure expenditure = new Expenditure();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         expenditure.setId(c.getInt(NUM_COL_ID));
-
         expenditure.setNom(c.getString(NUM_COL_NOM));
         expenditure.setCategorie(c.getString(NUM_COL_CATEGORIE));
         expenditure.setMontant(c.getFloat(NUM_COL_MONTANT));
@@ -189,6 +190,11 @@ public class BDDManager {
         c.close();
 
         return income;
+    }
+
+    private float incomeSum(){
+        Cursor cursor=bdd.rawQuery("Select SUM(montant) from table_revenus",null);
+        
     }
 
 }

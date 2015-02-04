@@ -1,5 +1,7 @@
 package com.projet.eseo.pocketbudget;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,9 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,13 +26,16 @@ public class ListIncomeActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_expenditure);
-        listView=(ListView)findViewById(R.id.listViewExpenditure);
+        setContentView(R.layout.activity_list_income);
 
-        BDDManager bdd= new BDDManager(this);
+        listView=(ListView)findViewById(R.id.listViewIncomes);
+
+        final BDDManager bdd= new BDDManager(this);
         bdd.open();
+
         final ArrayList<Income> listString = bdd.getAllRevenus();
-        ArrayAdapter<Expenditure> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, android.R.id.text1, listString) {
+
+        final ArrayAdapter<Expenditure> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, android.R.id.text1, listString) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -42,7 +49,38 @@ public class ListIncomeActivity extends ActionBarActivity {
         };
 
         listView.setAdapter(adapter);
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListIncomeActivity.this);
+                builder.setMessage(R.string.dialog_delete_message)
+                        .setTitle(R.string.dialog_delete_title);
+                builder.setPositiveButton(R.string.dialog_delete_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        bdd.removeDepenseWithID(listString.get(position).getId());
+                        listString.remove(position);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton(R.string.dialog_delete_no, new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return true;
+            }
+        });
     }
+
+
+
 
     @Override
     public void onResume(){
