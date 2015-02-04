@@ -98,12 +98,12 @@ public class BDDManager {
         return bdd.update(TABLE_REVENUS, values, COL_ID + " = " +id, null);
     }
 
-    public int removeDepenseWithID(int id){
+    public int removeDepenseWithID(long id){
         return bdd.delete(TABLE_DEPENSES, COL_ID + " = " +id, null);
 
     }
 
-    public int removeRevenuWithID(int id){
+    public int removeRevenuWithID(long id){
         return bdd.delete(TABLE_REVENUS, COL_ID + " = " +id, null);
     }
 
