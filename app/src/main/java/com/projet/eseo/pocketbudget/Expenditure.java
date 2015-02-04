@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class Expenditure {
 
-    private int id;
+    private long id;
     private Date date;
     private String categorie;
     private String nom;
@@ -22,11 +22,11 @@ public class Expenditure {
         this.montant=montant;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

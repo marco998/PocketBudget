@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -99,6 +100,7 @@ public class BDDManager {
 
     public int removeDepenseWithID(int id){
         return bdd.delete(TABLE_DEPENSES, COL_ID + " = " +id, null);
+
     }
 
     public int removeRevenuWithID(int id){
