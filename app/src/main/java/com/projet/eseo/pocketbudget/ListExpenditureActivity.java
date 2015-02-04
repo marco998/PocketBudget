@@ -21,7 +21,7 @@ public class ListExpenditureActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_expenditure);
 
-        listView=(ListView)findViewById(R.id.listViewDepenses);
+        listView=(ListView)findViewById(R.id.listViewExpenditure);
 
         BDDManager bdd= new BDDManager(this);
         bdd.open();
