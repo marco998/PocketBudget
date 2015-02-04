@@ -6,9 +6,10 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listViewRevenus"
-        android:layout_above="@+id/add_income_button"/>
+        android:layout_height="match_parent"
+        android:id="@+id/listViewIncomes"
+        android:layout_above="@+id/add_income_button"
+    />
 
     <Button
         android:layout_width="match_parent"
@@ -17,6 +18,5 @@
         android:id="@+id/add_income_button"
         android:layout_alignParentBottom="true"
         android:onClick="goToNewIncome"/>
-
 
 </RelativeLayout>
