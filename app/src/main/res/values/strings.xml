@@ -6,6 +6,8 @@
     <string name="expenditure_button_menu">Sortie d\'argent</string>
     <string name="app_name">Pocket Budget</string>
     <string name="title_expenditure">Nouvelle dépense</string>
+    <string name="title_display_expenditure">Modif. dépense</string>
+    <string name="title_display_income">Modif. revenu</string>
     <string name="date_expenditure">Date :</string>
     <string name="category_expenditure">Catégorie :</string>
     <string name="name_expenditure">Nom :</string>
@@ -50,6 +52,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_expenditure">ExpenditureActivity</string>
-
+    <string name="title_activity_income">IncomeActivity</string>
 
 </resources>

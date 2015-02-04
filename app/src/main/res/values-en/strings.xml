@@ -6,6 +6,8 @@
     <string name="expenditure_button_menu">Expenditure</string>
     <string name="app_name">Pocket Budget</string>
     <string name="title_expenditure">New Expenditure</string>
+    <string name="title_display_expenditure">Modif. expenditure</string>
+    <string name="title_display_income">Modif. income</string>
     <string name="date_expenditure">Date :</string>
     <string name="category_expenditure">Category :</string>
     <string name="name_expenditure">Name :</string>
