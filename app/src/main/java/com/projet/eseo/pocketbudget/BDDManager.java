@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Created by marc-antoine on 02/02/15.
+ * Classe de gestion de la BDD
  */
 
 public class BDDManager {

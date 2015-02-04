@@ -18,6 +18,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Activité gérant l'écran d'accueil
+ */
 
 public class ListIncomeActivity extends ActionBarActivity {
 

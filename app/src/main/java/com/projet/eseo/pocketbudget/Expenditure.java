@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * Created by marc-antoine on 02/02/15.
+ * Modèle des dépenses
  */
 public class Expenditure {
 

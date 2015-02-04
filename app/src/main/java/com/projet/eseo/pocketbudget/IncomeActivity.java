@@ -15,6 +15,9 @@ import org.apache.http.cookie.params.CookieSpecParamBean;
 
 import java.text.SimpleDateFormat;import java.util.Calendar;
 
+/**
+ * Activité gérant la liste des revenus
+ */
 
 public class IncomeActivity extends ActionBarActivity {
 

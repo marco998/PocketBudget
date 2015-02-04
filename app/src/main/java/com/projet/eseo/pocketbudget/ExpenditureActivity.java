@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+/**
+ * Activité gérant la modification et la visualisation d'un revenu
+ */
 
 public class ExpenditureActivity extends ActionBarActivity {
 

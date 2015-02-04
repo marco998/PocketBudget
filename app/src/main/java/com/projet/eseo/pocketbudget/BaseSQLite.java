@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 /**
- * Created by marc-antoine on 02/02/15.
+ * Classe de création de la BDD
  */
 public class BaseSQLite extends SQLiteOpenHelper{
 
