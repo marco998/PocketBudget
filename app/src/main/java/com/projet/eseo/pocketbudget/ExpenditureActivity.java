@@ -21,7 +21,7 @@ import java.util.Calendar;
 
 public class ExpenditureActivity extends ActionBarActivity {
 
-    private ArrayAdapter<CharSequence> categories_adapter;
+    private ArrayAdapter<CharSequence> categories_expenditure_adapter;
     private Spinner categories_expenditure_spinner;
     private EditText date;
     private EditText nom;
@@ -41,9 +41,9 @@ public class ExpenditureActivity extends ActionBarActivity {
         setContentView(R.layout.activity_expenditure);
 
         categories_expenditure_spinner = (Spinner) findViewById(R.id.categories_depense_spinner);
-        categories_adapter = ArrayAdapter.createFromResource(this, R.array.categories_list_expenditure, android.R.layout.simple_spinner_item);
-        categories_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categories_expenditure_spinner.setAdapter(categories_adapter);
+        categories_expenditure_adapter = ArrayAdapter.createFromResource(this, R.array.categories_list_expenditure, android.R.layout.simple_spinner_item);
+        categories_expenditure_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categories_expenditure_spinner.setAdapter(categories_expenditure_adapter);
 
         /** Capture our View elements */
         pDisplayDate = (TextView) findViewById(R.id.displayDate);
@@ -81,7 +81,7 @@ public class ExpenditureActivity extends ActionBarActivity {
         String compareValue = expenditure.getCategorie();
         Toast.makeText(getApplicationContext(), "test : "+compareValue,Toast.LENGTH_LONG).show();
         if (!compareValue.equals(null)) {
-            int spinnerPostion = categories_adapter.getPosition(compareValue);
+            int spinnerPostion = categories_expenditure_adapter.getPosition(compareValue);
             categories_expenditure_spinner.setSelection(spinnerPostion);
             spinnerPostion = 0;
         }

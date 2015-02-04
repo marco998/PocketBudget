@@ -77,6 +77,15 @@ public class ListIncomeActivity extends ActionBarActivity {
                 return true;
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
+                Intent intent = new Intent(getApplicationContext(), IncomeActivity.class);
+                intent.putExtra("ID",listString.get(position).getId());
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -85,14 +94,27 @@ public class ListIncomeActivity extends ActionBarActivity {
     @Override
     public void onResume(){
         super.onResume();
-        /*BDDManager bdd= new BDDManager(this);
+        BDDManager bdd = new BDDManager(this);
         bdd.open();
-        ArrayList<Income> listString = bdd.getAllRevenus();
-        StringAdapter adapter = new StringAdapter(getApplicationContext(), listString);
+        final ArrayList<Income> listStringUdpate = bdd.getAllRevenus();
+        bdd.close();
+
+        ArrayAdapter<Expenditure> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, android.R.id.text1, listStringUdpate) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+
+                text1.setText(listStringUdpate.get(position).getNom());
+                text2.setText(String.valueOf(listStringUdpate.get(position).getMontant()));
+                return view;
+            }
+        };
 
         listView.setAdapter(adapter);
-        bdd.close();*/
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

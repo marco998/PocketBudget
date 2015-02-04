@@ -9,7 +9,11 @@ import android.view.MenuItem;
 import android.view.View;import android.widget.ArrayAdapter;
 import android.widget.Button;import android.widget.DatePicker;import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;import android.widget.TextView;import android.widget.Toast;import java.text.SimpleDateFormat;import java.util.Calendar;
+import android.widget.Spinner;import android.widget.TextView;import android.widget.Toast;
+
+import org.apache.http.cookie.params.CookieSpecParamBean;
+
+import java.text.SimpleDateFormat;import java.util.Calendar;
 
 
 public class IncomeActivity extends ActionBarActivity {
@@ -26,6 +30,7 @@ public class IncomeActivity extends ActionBarActivity {
     private int pMonth;
     private int pDay;
     static final int DATE_DIALOG_ID = 0;
+    private long id;
 
     private DatePickerDialog.OnDateSetListener pDateSetListener =
             new DatePickerDialog.OnDateSetListener() {
@@ -92,8 +97,53 @@ public class IncomeActivity extends ActionBarActivity {
         /** Display the current date in the TextView */
         updateDisplay();
 
+        Intent intent = getIntent();
+        id = intent.getExtras().getLong("ID");
+        Toast.makeText(getApplicationContext(), "test : "+id,Toast.LENGTH_LONG).show();
+        Income income = new Income();
+        BDDManager bdd = new BDDManager(this);
+        bdd.open();
+        income = bdd.getRevenuWithId(id);
+        bdd.close();
+
+        categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
+        nom = (EditText) findViewById(R.id.nom_revenu_ediText);
+        montant = (EditText) findViewById(R.id.montant_revenu_editText);
+
+        String compareValue = income.getCategorie();
+        Toast.makeText(getApplicationContext(), "test : "+compareValue,Toast.LENGTH_LONG).show();
+        if (!compareValue.equals(null)) {
+            int spinnerPostion = categories_income_adapter.getPosition(compareValue);
+            categories_income_spinner.setSelection(spinnerPostion);
+            spinnerPostion = 0;
+        }
+
+        nom.setText(income.getNom());
+        montant.setText(String.valueOf(income.getMontant()));
+
     }
 
+    public void updateIncome(View view){
+        Income newIncome = new Income();
+
+        //date = (EditText) findViewById((R.id.displayDate));
+        categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
+        nom = (EditText) findViewById(R.id.nom_revenu_ediText);
+        montant = (EditText) findViewById(R.id.montant_revenu_editText);
+
+        if(!categories_income_spinner.getSelectedItem().toString().equals("")
+            && !nom.getText().toString().equals("")
+            && Float.parseFloat(montant.getText().toString()) != 0){
+
+            newIncome.setCategorie(categories_income_spinner.getSelectedItem().toString());
+            newIncome.setNom(nom.getText().toString());
+            newIncome.setMontant(Float.parseFloat(montant.getText().toString()));
+
+            BDDManager bdd = new BDDManager(this);
+            bdd.open();
+            bdd.updateRevenus(id,newIncome);
+        }
+    }
 
     @Override
     protected void onResume(){

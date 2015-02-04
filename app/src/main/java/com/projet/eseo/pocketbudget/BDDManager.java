@@ -78,21 +78,21 @@ public class BDDManager {
         return bdd.insertOrThrow(TABLE_REVENUS, null, values);
     }
 
-    public int updateDepense(int id, Expenditure expenditure){
+    public int updateDepense(long id, Expenditure expenditure){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, expenditure.getCategorie());
-        values.put(COL_DATE,dateFormat.format(expenditure.getDate()));
+        //values.put(COL_DATE,dateFormat.format(expenditure.getDate()));
         values.put(COL_NOM, expenditure.getNom());
         values.put(COL_MONTANT, expenditure.getMontant());
         return bdd.update(TABLE_DEPENSES, values, COL_ID + " = " +id, null);
     }
 
-    public int updateRevenus(int id, Income income){
+    public int updateRevenus(long id, Income income){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, income.getCategorie());
-        values.put(COL_DATE,dateFormat.format(income.getDate()));
+        //values.put(COL_DATE,dateFormat.format(income.getDate()));
         values.put(COL_NOM, income.getNom());
         values.put(COL_MONTANT, income.getMontant());
         return bdd.update(TABLE_REVENUS, values, COL_ID + " = " +id, null);
@@ -192,9 +192,9 @@ public class BDDManager {
         return income;
     }
 
-    private float incomeSum(){
+   /* private float incomeSum(){
         Cursor cursor=bdd.rawQuery("Select SUM(montant) from table_revenus",null);
         
-    }
+    }*/
 
 }

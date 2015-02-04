@@ -104,7 +104,8 @@ public class NewExpenditureActivity extends ActionBarActivity {
 
     @Override
          protected void onResume(){
-            super.onResume();
+
+        super.onResume();
         }
 
 

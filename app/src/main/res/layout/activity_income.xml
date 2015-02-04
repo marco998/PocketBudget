@@ -76,7 +76,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/categories_income_spinner" />
+                android:id="@+id/categories_income_spinner"
+                android:spinnerMode="dialog" />
 
         </LinearLayout>
 
@@ -102,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:ems="10"
-                android:id="@+id/name_income"
+                android:id="@+id/nom_revenu_ediText"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -128,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:ems="10"
-                android:id="@+id/montant_income"
+                android:id="@+id/montant_revenu_editText"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -142,8 +143,8 @@
             android:textSize="25dp"
             android:id="@+id/valider_button"
             android:layout_gravity="center_horizontal"
-            android:onClick="addNewIncome"
-            />
+            android:onClick="updateIncome"
+         />
 
 
     </LinearLayout>
