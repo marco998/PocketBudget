@@ -50,6 +50,10 @@
             android:name=".IncomeActivity"
             android:label="@string/title_activity_income" >
         </activity>
+        <activity
+            android:name=".StatisticActivity"
+            android:label="@string/title_activity_statistic" >
+        </activity>
     </application>
 
 </manifest>

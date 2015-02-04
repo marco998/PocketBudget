@@ -37,9 +37,6 @@ public class ListExpenditureActivity extends ActionBarActivity {
 
         final ArrayList<Expenditure> listString = bdd.getAllDepense();
 
-
-
-
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
 
@@ -78,51 +75,6 @@ public class ListExpenditureActivity extends ActionBarActivity {
             }
         });
 
-        if(!listString.isEmpty()) {
-            final ArrayAdapter<Expenditure> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, android.R.id.text1, listString) {
-                @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
-                    View view = super.getView(position, convertView, parent);
-                    TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-                    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-
-                    text1.setText(listString.get(position).getNom());
-                    text2.setText(String.valueOf(listString.get(position).getMontant()));
-                    return view;
-                }
-            };
-
-            listView.setAdapter(adapter);
-
-            listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-
-                public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(ListExpenditureActivity.this);
-                    builder.setMessage(R.string.dialog_delete_message)
-                            .setTitle(R.string.dialog_delete_title);
-                    builder.setPositiveButton(R.string.dialog_delete_yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            bdd.removeDepenseWithID(listString.get(position).getId());
-                            listString.remove(position);
-                            adapter.notifyDataSetChanged();
-                        }
-                    });
-                    builder.setNegativeButton(R.string.dialog_delete_no, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                    return true;
-                }
-            });
-        }
     }
 
     @Override

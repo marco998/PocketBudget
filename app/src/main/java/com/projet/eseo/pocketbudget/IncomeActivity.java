@@ -176,8 +176,8 @@ public class IncomeActivity extends ActionBarActivity {
 
 
     public void addNewIncome(View view){
-        /*
-        date = (EditText) findViewById(R.id.date_depense);
+
+        date = (EditText) findViewById(R.id.date_depense_textView);
 
         categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
         nom = (EditText) findViewById(R.id.name_income);
@@ -200,18 +200,12 @@ public class IncomeActivity extends ActionBarActivity {
         newIncome.setCategorie(categorieDepense);
         newIncome.setMontant(montantDepense);
         newIncome.setNom(nomDepense);
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        try{
-            newIncome.setDate(formatter.parse(dateDepense));
-        }catch(Exception e){
-        }
+        newIncome.setDate(dateDepense);
 
         BDDManager bddManager = new BDDManager(this);
         bddManager.open();
         bddManager.insertRevenu(newIncome);
         bddManager.close();
 
-        */
     }
 }

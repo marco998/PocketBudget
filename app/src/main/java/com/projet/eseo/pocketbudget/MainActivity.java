@@ -1,12 +1,14 @@
 package com.projet.eseo.pocketbudget;
 
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
-
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -16,6 +18,14 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BDDManager bddm= new BDDManager(this);
+        bddm.open();
+        TextView diff = (TextView)findViewById(R.id.difference);
+        float valueDiff= bddm.difference();
+        if(valueDiff<0)
+            diff.setTextColor(Color.RED);
+        else
+            diff.setTextColor(Color.GREEN);
+        diff.setText(" "+String.valueOf(valueDiff)+"€");
 
     }
 

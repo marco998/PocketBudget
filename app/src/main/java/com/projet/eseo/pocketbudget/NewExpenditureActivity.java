@@ -153,12 +153,8 @@ public class NewExpenditureActivity extends ActionBarActivity {
        newExpenditur.setCategorie(categorieDepense);
        newExpenditur.setMontant(montantDepense);
        newExpenditur.setNom(nomDepense);
+       newExpenditur.setDate(dateDepense);
 
-       SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-       try{
-           newExpenditur.setDate(formatter.parse(dateDepense));
-       }catch(Exception e){
-       }
 
        BDDManager bddManager = new BDDManager(this);
        bddManager.open();

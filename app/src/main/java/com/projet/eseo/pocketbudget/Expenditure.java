@@ -8,14 +8,14 @@ import java.util.Date;
 public class Expenditure {
 
     private long id;
-    private Date date;
+    private String date;
     private String categorie;
     private String nom;
     private float montant;
 
     public Expenditure(){}
 
-    public Expenditure(Date date, String categorie, String nom, float montant){
+    public Expenditure(String date, String categorie, String nom, float montant){
         this.date=date;
         this.categorie=categorie;
         this.nom=nom;
@@ -30,11 +30,11 @@ public class Expenditure {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

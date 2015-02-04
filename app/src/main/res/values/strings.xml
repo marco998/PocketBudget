@@ -53,5 +53,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_expenditure">ExpenditureActivity</string>
     <string name="title_activity_income">IncomeActivity</string>
+    <string name="title_activity_statistic">StatisticActivity</string>
 
 </resources>

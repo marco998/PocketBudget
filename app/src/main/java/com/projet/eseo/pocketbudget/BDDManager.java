@@ -192,9 +192,26 @@ public class BDDManager {
         return income;
     }
 
-   /* private float incomeSum(){
+    public float incomeSum(){
         Cursor cursor=bdd.rawQuery("Select SUM(montant) from table_revenus",null);
-        
-    }*/
+        if(cursor.moveToFirst()){
+           return cursor.getFloat(0);
+        }
+        return 0;
+    }
+
+
+    public float expeditureSum(){
+        Cursor cursor=bdd.rawQuery("Select SUM(montant) from table_depenses",null);
+        if(cursor.moveToFirst()){
+            return cursor.getFloat(0);
+        }
+        return 0;
+    }
+
+    public float difference(){
+        return (this.incomeSum()-this.expeditureSum());
+    }
+
 
 }
