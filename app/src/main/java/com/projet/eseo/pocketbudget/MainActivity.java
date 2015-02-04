@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -21,11 +24,14 @@ public class MainActivity extends ActionBarActivity {
         bddm.open();
         TextView diff = (TextView)findViewById(R.id.difference);
         float valueDiff= bddm.difference();
-        if(valueDiff<0)
+        Toast.makeText(getApplicationContext(), "test : " + valueDiff, LENGTH_LONG).show();
+        if(valueDiff<0){
             diff.setTextColor(Color.RED);
-        else
+        }else{
             diff.setTextColor(Color.GREEN);
+        }
         diff.setText(" "+String.valueOf(valueDiff)+"€");
+
 
     }
 
@@ -40,6 +46,17 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onResume(){
         super.onResume();
+        BDDManager bddm= new BDDManager(this);
+        bddm.open();
+        TextView diff = (TextView)findViewById(R.id.difference);
+        float valueDiff= bddm.difference();
+        Toast.makeText(getApplicationContext(), "test : " + valueDiff, LENGTH_LONG).show();
+        if(valueDiff<0){
+            diff.setTextColor(Color.RED);
+        }else{
+            diff.setTextColor(Color.GREEN);
+        }
+        diff.setText(" "+String.valueOf(valueDiff)+"€");
     }
 
 

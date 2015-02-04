@@ -39,8 +39,8 @@ public class BaseSQLite extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE " + TABLE_DEPENSES + ";" +
-                "DROP TABLE "+TABLE_REVENUS+ ";");
+        db.execSQL("DROP TABLE " + TABLE_DEPENSES + ";");
+        db.execSQL("DROP TABLE "+TABLE_REVENUS+ ";");
         onCreate(db);
     }
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class BDDManager {
 
-    private static final int VERSION_BDD = 6;
+    private static final int VERSION_BDD = 11;
     private static final String NOM_BDD = "budget.db";
 
     private static final String TABLE_DEPENSES = "table_depenses";
@@ -60,8 +60,7 @@ public class BDDManager {
         ContentValues values = new ContentValues();
 
         values.put(COL_CATEGORIE, expenditure.getCategorie());
-        values.put(COL_DATE, dateFormat.format(expenditure.getDate()));
-        values.put(COL_DATE, "12-12-12");
+        values.put(COL_DATE, expenditure.getDate());
         values.put(COL_NOM, expenditure.getNom());
         values.put(COL_MONTANT, expenditure.getMontant());
         return bdd.insertOrThrow(TABLE_DEPENSES, null, values);
@@ -71,8 +70,7 @@ public class BDDManager {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, revenus.getCategorie());
-        values.put(COL_DATE, dateFormat.format(revenus.getDate()));
-        values.put(COL_DATE, "12-12-12");
+        values.put(COL_DATE, revenus.getDate());
         values.put(COL_NOM, revenus.getNom());
         values.put(COL_MONTANT, revenus.getMontant());
         return bdd.insertOrThrow(TABLE_REVENUS, null, values);

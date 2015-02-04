@@ -94,12 +94,12 @@ public class ListIncomeActivity extends ActionBarActivity {
     @Override
     public void onResume(){
         super.onResume();
-        BDDManager bdd = new BDDManager(this);
+        final BDDManager bdd = new BDDManager(this);
         bdd.open();
         final ArrayList<Income> listStringUdpate = bdd.getAllRevenus();
-        bdd.close();
 
-        ArrayAdapter<Expenditure> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, android.R.id.text1, listStringUdpate) {
+
+        final ArrayAdapter<Expenditure> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, android.R.id.text1, listStringUdpate) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -113,6 +113,43 @@ public class ListIncomeActivity extends ActionBarActivity {
         };
 
         listView.setAdapter(adapter);
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListIncomeActivity.this);
+                builder.setMessage(R.string.dialog_delete_message)
+                        .setTitle(R.string.dialog_delete_title);
+                builder.setPositiveButton(R.string.dialog_delete_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        bdd.removeRevenuWithID(listStringUdpate.get(position).getId());
+                        listStringUdpate.remove(position);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton(R.string.dialog_delete_no, new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return true;
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
+                Intent intent = new Intent(getApplicationContext(), IncomeActivity.class);
+                intent.putExtra("ID",listStringUdpate.get(position).getId());
+                startActivity(intent);
+            }
+        });
     }
 
 
