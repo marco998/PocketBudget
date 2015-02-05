@@ -6,15 +6,15 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:id="@+id/listViewIncomes"
-    />
+         />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/add_income_butn"
         android:id="@+id/add_income_button"
-        android:onClick="goToNewIncome"/>
+        android:onClick="goToNewIncome" />
 
 </LinearLayout>

@@ -1,6 +1,8 @@
 package com.projet.eseo.pocketbudget;
 
-import android.app.DatePickerDialog;import android.app.Dialog;import android.app.DialogFragment;import android.content.Context;import android.support.v7.app.ActionBarActivity;
+import android.app.DatePickerDialog;import android.app.Dialog;import android.app.DialogFragment;import android.content.Context;
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -129,29 +131,30 @@ public class NewIncomeActivity extends ActionBarActivity {
         nom = (EditText) findViewById(R.id.name_income);
         montant = (EditText) findViewById(R.id.montant_income);
 
-        String dateRevenu = date.getText().toString();
-        String categorieRevenu = categories_income_spinner.getSelectedItem().toString();
-        String nomRevenu = nom.getText().toString();
-        float montantRevenu =  Float.parseFloat(montant.getText().toString());
+        if(date.getText().toString().trim().length()>0 && nom.getText().toString().trim().length()>0 && montant.getText().toString().trim().length()>0 ) {
+
+            String dateRevenu = date.getText().toString();
+            String categorieRevenu = categories_income_spinner.getSelectedItem().toString();
+            String nomRevenu = nom.getText().toString();
+            float montantRevenu = Float.parseFloat(montant.getText().toString());
 
 
-        Context context = getApplicationContext();
-        CharSequence text = "Date = "+dateRevenu+" - Categorie : "+categorieRevenu+" - Nom : "+nomRevenu+" - Montant : "+montantRevenu;
-        int duration = Toast.LENGTH_LONG;
+            Income newIncome = new Income();
+            newIncome.setCategorie(categorieRevenu);
+            newIncome.setMontant(montantRevenu);
+            newIncome.setNom(nomRevenu);
+            newIncome.setDate(dateRevenu);
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+            BDDManager bddManager = new BDDManager(this);
+            bddManager.open();
+            bddManager.insertRevenu(newIncome);
+            bddManager.close();
 
-        Income newIncome = new Income();
-        newIncome.setCategorie(categorieRevenu);
-        newIncome.setMontant(montantRevenu);
-        newIncome.setNom(nomRevenu);
-        newIncome.setDate(dateRevenu);
-
-        BDDManager bddManager = new BDDManager(this);
-        bddManager.open();
-        bddManager.insertRevenu(newIncome);
-        bddManager.close();
+            Intent intent = new Intent(this, ListIncomeActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,R.string.error_insert,Toast.LENGTH_LONG).show();
+        }
 
     }
 }

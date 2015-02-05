@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="title_application">Pocket Budget</string>
+    <string name="title_application">PocketBudget</string>
     <string name="income_button_menu">Income</string>
     <string name="expenditure_button_menu">Expenditure</string>
-    <string name="app_name">Pocket Budget</string>
+    <string name="app_name">PocketBudget</string>
     <string name="title_expenditure">New Expenditure</string>
     <string name="title_display_expenditure">Modif. expenditure</string>
     <string name="title_display_income">Modif. income</string>
@@ -24,7 +24,6 @@
     <string name="difference_textView">Diff. :</string>
     <string name="add_income_butn">Add new income</string>
     <string name="add_expenditure_butn">Add new expenditure</string>
-    <string name="statistics_butn">See statistics</string>
 
     <string-array name="categories_list_income">
         <item>INCOME</item>

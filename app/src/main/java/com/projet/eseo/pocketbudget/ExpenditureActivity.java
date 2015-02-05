@@ -72,8 +72,6 @@ public class ExpenditureActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         id = intent.getExtras().getLong("ID");
-        Toast.makeText(getApplicationContext(), "testCREATE : "+id,Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "test : "+id,Toast.LENGTH_LONG).show();
         Expenditure expenditure = new Expenditure();
         BDDManager bdd = new BDDManager(this);
         bdd.open();
@@ -85,7 +83,6 @@ public class ExpenditureActivity extends ActionBarActivity {
         montant = (EditText) findViewById(R.id.montant_depense_editText);
 
         String compareValue = expenditure.getCategorie();
-        Toast.makeText(getApplicationContext(), "test : "+compareValue,Toast.LENGTH_LONG).show();
         if (!compareValue.equals(null)) {
             int spinnerPostion = categories_expenditure_adapter.getPosition(compareValue);
             categories_expenditure_spinner.setSelection(spinnerPostion);
@@ -161,19 +158,26 @@ public class ExpenditureActivity extends ActionBarActivity {
         categories_expenditure_spinner = (Spinner) findViewById(R.id.categories_depense_spinner);
         nom = (EditText) findViewById(R.id.nom_depense_editText);
         montant = (EditText) findViewById(R.id.montant_depense_editText);
+        if(date.getText().toString().trim().length()>0 && nom.getText().toString().trim().length()>0 && montant.getText().toString().trim().length()>0 ) {
 
-        if(!categories_expenditure_spinner.getSelectedItem().toString().equals("")
-                && !nom.getText().toString().equals("")
-                && Float.parseFloat(montant.getText().toString()) != 0){
+            if (!categories_expenditure_spinner.getSelectedItem().toString().equals("")
+                    && !nom.getText().toString().equals("")
+                    && Float.parseFloat(montant.getText().toString()) != 0) {
 
-            newExpenditure.setCategorie(categories_expenditure_spinner.getSelectedItem().toString());
-            newExpenditure.setNom(nom.getText().toString());
-            newExpenditure.setMontant(Float.parseFloat(montant.getText().toString()));
+                newExpenditure.setCategorie(categories_expenditure_spinner.getSelectedItem().toString());
+                newExpenditure.setNom(nom.getText().toString());
+                newExpenditure.setMontant(Float.parseFloat(montant.getText().toString()));
 
-            BDDManager bdd = new BDDManager(this);
-            bdd.open();
-            bdd.updateDepense(id,newExpenditure);
+                BDDManager bdd = new BDDManager(this);
+                bdd.open();
+                bdd.updateDepense(id, newExpenditure);
+            }
+
+
+            Intent intent = new Intent(this, ListExpenditureActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,R.string.error_insert,Toast.LENGTH_LONG).show();
         }
-        Toast.makeText(getApplicationContext(), "test : MODIIIFF"+id,Toast.LENGTH_LONG).show();
     }
 }

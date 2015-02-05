@@ -102,7 +102,6 @@ public class IncomeActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         id = intent.getExtras().getLong("ID");
-        Toast.makeText(getApplicationContext(), "test : "+id,Toast.LENGTH_LONG).show();
         Income income = new Income();
         BDDManager bdd = new BDDManager(this);
         bdd.open();
@@ -114,7 +113,6 @@ public class IncomeActivity extends ActionBarActivity {
         montant = (EditText) findViewById(R.id.montant_revenu_editText);
 
         String compareValue = income.getCategorie();
-        Toast.makeText(getApplicationContext(), "test : "+compareValue,Toast.LENGTH_LONG).show();
         if (!compareValue.equals(null)) {
             int spinnerPostion = categories_income_adapter.getPosition(compareValue);
             categories_income_spinner.setSelection(spinnerPostion);
@@ -133,18 +131,25 @@ public class IncomeActivity extends ActionBarActivity {
         categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
         nom = (EditText) findViewById(R.id.nom_revenu_ediText);
         montant = (EditText) findViewById(R.id.montant_revenu_editText);
+        if(date.getText().toString().trim().length()>0 && nom.getText().toString().trim().length()>0 && montant.getText().toString().trim().length()>0 ) {
 
-        if(!categories_income_spinner.getSelectedItem().toString().equals("")
-            && !nom.getText().toString().equals("")
-            && Float.parseFloat(montant.getText().toString()) != 0){
+            if (!categories_income_spinner.getSelectedItem().toString().equals("")
+                    && !nom.getText().toString().equals("")
+                    && Float.parseFloat(montant.getText().toString()) != 0) {
 
-            newIncome.setCategorie(categories_income_spinner.getSelectedItem().toString());
-            newIncome.setNom(nom.getText().toString());
-            newIncome.setMontant(Float.parseFloat(montant.getText().toString()));
+                newIncome.setCategorie(categories_income_spinner.getSelectedItem().toString());
+                newIncome.setNom(nom.getText().toString());
+                newIncome.setMontant(Float.parseFloat(montant.getText().toString()));
 
-            BDDManager bdd = new BDDManager(this);
-            bdd.open();
-            bdd.updateRevenus(id,newIncome);
+                BDDManager bdd = new BDDManager(this);
+                bdd.open();
+                bdd.updateRevenus(id, newIncome);
+            }
+
+            Intent intent = new Intent(this, ListIncomeActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this,R.string.error_insert,Toast.LENGTH_LONG).show();
         }
     }
 

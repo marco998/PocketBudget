@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class BDDManager {
 
-    private static final int VERSION_BDD = 11;
+    private static final int VERSION_BDD = 12;
     private static final String NOM_BDD = "budget.db";
 
     private static final String TABLE_DEPENSES = "table_depenses";

@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,11 +23,17 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*ImageView image= (ImageView)findViewById(R.id.icon);
+        image.setImageResource(R.drawable.icon_pig);*/
+
+
         BDDManager bddm= new BDDManager(this);
         bddm.open();
         TextView diff = (TextView)findViewById(R.id.difference);
+
+        //Affichage de la différence
         float valueDiff= bddm.difference();
-        Toast.makeText(getApplicationContext(), "test : " + valueDiff, LENGTH_LONG).show();
         if(valueDiff<0){
             diff.setTextColor(Color.RED);
         }else{
@@ -50,7 +59,6 @@ public class MainActivity extends ActionBarActivity {
         bddm.open();
         TextView diff = (TextView)findViewById(R.id.difference);
         float valueDiff= bddm.difference();
-        Toast.makeText(getApplicationContext(), "test : " + valueDiff, LENGTH_LONG).show();
         if(valueDiff<0){
             diff.setTextColor(Color.RED);
         }else{

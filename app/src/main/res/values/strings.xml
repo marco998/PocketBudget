@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="title_application">Pocket Budget</string>
+    <string name="title_application">PocketBudget</string>
     <string name="income_button_menu">Entrée d\'argent</string>
     <string name="expenditure_button_menu">Sortie d\'argent</string>
-    <string name="app_name">Pocket Budget</string>
+    <string name="app_name">PocketBudget</string>
     <string name="title_expenditure">Nouvelle dépense</string>
     <string name="title_display_expenditure">Modif. dépense</string>
     <string name="title_display_income">Modif. revenu</string>
@@ -12,7 +12,7 @@
     <string name="category_expenditure">Catégorie :</string>
     <string name="name_expenditure">Nom :</string>
     <string name="sum_expenditure">Montant :</string>
-    <string name="title_income">Nouveau income</string>
+    <string name="title_income">Nouveau revenu</string>
     <string name="date_income">Date :</string>
     <string name="category_income">Catégorie :</string>
     <string name="name_income">Nom :</string>
@@ -20,7 +20,7 @@
     <string name="validate_button">Valider</string>
     <string name="title_activity_new_income">Nouveau Revenu</string>
     <string name="title_activity_new_expenditure">Nouvelle dépense</string>
-    <string name="title_activity_list_revenus">Liste des incomes</string>
+    <string name="title_activity_list_revenus">Liste des revenus</string>
     <string name="action_settings">Options</string>
     <string name="difference_textView">Diff. :</string>
     <string name="add_income_butn">Ajouter nouveau revenu</string>
@@ -30,6 +30,7 @@
     <string name="dialog_delete_message">L\'action de suppression est irréversible</string>
     <string name="dialog_delete_yes">Supprimer</string>
     <string name="dialog_delete_no">Annuler</string>
+    <string name="error_insert">Un des champs n\'est pas complété</string>
 
     <string-array name="categories_list_income">
         <item>SALAIRE</item>

@@ -3,6 +3,7 @@ package com.projet.eseo.pocketbudget;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -133,34 +134,36 @@ public class NewExpenditureActivity extends ActionBarActivity {
     }
 
    public void addNewExpenditure(View view){
+
+
        date = (EditText) findViewById(R.id.displayDate);
        categories_expenditure_spinner = (Spinner) findViewById(R.id.categories_depense_spinner);
        nom = (EditText) findViewById(R.id.nom_depense_editText);
        montant = (EditText) findViewById(R.id.montant_depense_editText);
 
-       String dateDepense = date.getText().toString();
-       String categorieDepense = categories_expenditure_spinner.getSelectedItem().toString();
-       String nomDepense = nom.getText().toString();
-       float montantDepense =  Float.parseFloat(montant.getText().toString());
+       if(date.getText().toString().trim().length()>0 && nom.getText().toString().trim().length()>0 && montant.getText().toString().trim().length()>0 ) {
+           String dateDepense = date.getText().toString();
+           String categorieDepense = categories_expenditure_spinner.getSelectedItem().toString();
+           String nomDepense = nom.getText().toString();
+           float montantDepense = Float.parseFloat(montant.getText().toString());
+
+           Expenditure newExpenditur = new Expenditure();
+           newExpenditur.setCategorie(categorieDepense);
+           newExpenditur.setMontant(montantDepense);
+           newExpenditur.setNom(nomDepense);
+           newExpenditur.setDate(dateDepense);
 
 
-       Context context = getApplicationContext();
-       CharSequence text = "Date = "+dateDepense+" - Categorie : "+categorieDepense+" - Nom : "+nomDepense+" - Montant : "+montantDepense;
-       int duration = Toast.LENGTH_LONG;
+           BDDManager bddManager = new BDDManager(this);
+           bddManager.open();
+           bddManager.insertDepense(newExpenditur);
+           bddManager.close();
 
-       Toast toast = Toast.makeText(context, text, duration);
-       toast.show();
-
-       Expenditure newExpenditur = new Expenditure();
-       newExpenditur.setCategorie(categorieDepense);
-       newExpenditur.setMontant(montantDepense);
-       newExpenditur.setNom(nomDepense);
-       newExpenditur.setDate(dateDepense);
-
-
-       BDDManager bddManager = new BDDManager(this);
-       bddManager.open();
-       bddManager.insertDepense(newExpenditur);
-       bddManager.close();
+           Intent intent = new Intent(this, ListExpenditureActivity.class);
+           startActivity(intent);
+       }else{
+           Toast.makeText(this,R.string.error_insert,Toast.LENGTH_LONG).show();
+       }
     }
+
 }

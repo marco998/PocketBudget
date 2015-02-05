@@ -16,6 +16,17 @@
         android:layout_centerHorizontal="true"
         >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PocketBudget"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:textSize="26sp"
+            android:textStyle="italic"
+            android:textColor="@android:color/white"
+            style="@style/Base.TextAppearance.AppCompat.Title" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="75dp"
@@ -65,13 +76,6 @@
 
         </LinearLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="@string/statistics_butn"
-            android:id="@+id/statistics_button"
-            android:background="#ffb0dfff" />
 
     </LinearLayout>
 

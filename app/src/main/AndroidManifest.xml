@@ -19,12 +19,18 @@
         <activity
             android:name=".NewIncomeActivity"
             android:label="@string/title_activity_new_income"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".ListIncomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.projet.eseo.pocketbudget.MainActivity" />
         </activity>
         <activity
             android:name=".NewExpenditureActivity"
             android:label="@string/title_activity_new_expenditure"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".ListExpenditureActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.projet.eseo.pocketbudget.ListExpenditureActivity" />
         </activity>
         <activity
             android:name=".ListIncomeActivity"
@@ -36,7 +42,11 @@
         </activity>
         <activity
             android:name=".ListExpenditureActivity"
-            android:label="@string/title_activity_list_expenditure" >
+            android:label="@string/title_activity_list_expenditure"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.projet.eseo.pocketbudget.MainActivity" />
         </activity>
         <activity
             android:name=".ExpenditureActivity"
@@ -48,12 +58,13 @@
         </activity>
         <activity
             android:name=".IncomeActivity"
-            android:label="@string/title_activity_income" >
+            android:label="@string/title_activity_income"
+            android:parentActivityName=".ListIncomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.projet.eseo.pocketbudget.ListIncomeActivity" />
         </activity>
-        <activity
-            android:name=".StatisticActivity"
-            android:label="@string/title_activity_statistic" >
-        </activity>
+
     </application>
 
 </manifest>
