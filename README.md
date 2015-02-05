@@ -5,4 +5,4 @@ Cette application de budget permet de :
 - Modifier une dépense ou un revenu
 - Visualiser l'ensemble des dépenses ou revenus
 - Visualiser la différence entre revenus et dépenses
-- Supprimer une dépense ou revenu en restant appuyer sur un élément de la liste
+- Supprimer une dépense ou revenu en restant appuyé sur un élément de la liste
