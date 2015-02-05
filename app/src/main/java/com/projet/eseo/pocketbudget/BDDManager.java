@@ -67,13 +67,13 @@ public class BDDManager {
         return bdd.insertOrThrow(TABLE_DEPENSES, null, values);
     }
 
-    public long insertRevenu(Income revenus){
+    public long insertRevenu(Income income){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ContentValues values = new ContentValues();
-        values.put(COL_CATEGORIE, revenus.getCategorie());
-        values.put(COL_DATE, revenus.getDate());
-        values.put(COL_NOM, revenus.getNom());
-        values.put(COL_MONTANT, revenus.getMontant());
+        values.put(COL_CATEGORIE, income.getCategorie());
+        values.put(COL_DATE, income.getDate());
+        values.put(COL_NOM, income.getNom());
+        values.put(COL_MONTANT, income.getMontant());
         return bdd.insertOrThrow(TABLE_REVENUS, null, values);
     }
 
@@ -81,7 +81,7 @@ public class BDDManager {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, expenditure.getCategorie());
-        //values.put(COL_DATE,dateFormat.format(expenditure.getDate()));
+        values.put(COL_DATE,expenditure.getDate());
         values.put(COL_NOM, expenditure.getNom());
         values.put(COL_MONTANT, expenditure.getMontant());
         return bdd.update(TABLE_DEPENSES, values, COL_ID + " = " +id, null);
@@ -91,7 +91,7 @@ public class BDDManager {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ContentValues values = new ContentValues();
         values.put(COL_CATEGORIE, income.getCategorie());
-        //values.put(COL_DATE,dateFormat.format(income.getDate()));
+        values.put(COL_DATE,income.getDate());
         values.put(COL_NOM, income.getNom());
         values.put(COL_MONTANT, income.getMontant());
         return bdd.update(TABLE_REVENUS, values, COL_ID + " = " +id, null);
@@ -165,6 +165,7 @@ public class BDDManager {
         expenditure.setNom(c.getString(NUM_COL_NOM));
         expenditure.setCategorie(c.getString(NUM_COL_CATEGORIE));
         expenditure.setMontant(c.getFloat(NUM_COL_MONTANT));
+        expenditure.setDate(c.getString(NUM_COL_DATE));
         //On ferme le cursor
         c.close();
 
@@ -181,7 +182,7 @@ public class BDDManager {
         Income income = new Income();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         income.setId(c.getInt(NUM_COL_ID));
-
+        income.setDate(c.getString(NUM_COL_DATE));
         income.setNom(c.getString(NUM_COL_NOM));
         income.setCategorie(c.getString(NUM_COL_CATEGORIE));
         income.setMontant(c.getFloat(NUM_COL_MONTANT));

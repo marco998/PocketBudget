@@ -111,6 +111,7 @@ public class IncomeActivity extends ActionBarActivity {
         categories_income_spinner = (Spinner) findViewById(R.id.categories_income_spinner);
         nom = (EditText) findViewById(R.id.nom_revenu_ediText);
         montant = (EditText) findViewById(R.id.montant_revenu_editText);
+        date=(EditText)findViewById(R.id.displayDate);
 
         String compareValue = income.getCategorie();
         if (!compareValue.equals(null)) {
@@ -118,7 +119,7 @@ public class IncomeActivity extends ActionBarActivity {
             categories_income_spinner.setSelection(spinnerPostion);
             spinnerPostion = 0;
         }
-
+        date.setText(income.getDate());
         nom.setText(income.getNom());
         montant.setText(String.valueOf(income.getMontant()));
 
@@ -140,6 +141,7 @@ public class IncomeActivity extends ActionBarActivity {
                 newIncome.setCategorie(categories_income_spinner.getSelectedItem().toString());
                 newIncome.setNom(nom.getText().toString());
                 newIncome.setMontant(Float.parseFloat(montant.getText().toString()));
+                newIncome.setDate(date.getText().toString());
 
                 BDDManager bdd = new BDDManager(this);
                 bdd.open();

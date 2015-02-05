@@ -17,7 +17,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Activité gérant la modification et la visualisation d'un revenu
@@ -81,6 +83,7 @@ public class ExpenditureActivity extends ActionBarActivity {
         categories_expenditure_spinner = (Spinner) findViewById(R.id.categories_depense_spinner);
         nom = (EditText) findViewById(R.id.nom_depense_editText);
         montant = (EditText) findViewById(R.id.montant_depense_editText);
+        date=(EditText)findViewById(R.id.displayDate);
 
         String compareValue = expenditure.getCategorie();
         if (!compareValue.equals(null)) {
@@ -89,6 +92,7 @@ public class ExpenditureActivity extends ActionBarActivity {
             spinnerPostion = 0;
         }
 
+        date.setText(expenditure.getDate());
         nom.setText(expenditure.getNom());
         montant.setText(String.valueOf(expenditure.getMontant()));
     }
@@ -167,6 +171,7 @@ public class ExpenditureActivity extends ActionBarActivity {
                 newExpenditure.setCategorie(categories_expenditure_spinner.getSelectedItem().toString());
                 newExpenditure.setNom(nom.getText().toString());
                 newExpenditure.setMontant(Float.parseFloat(montant.getText().toString()));
+                newExpenditure.setDate(date.getText().toString());
 
                 BDDManager bdd = new BDDManager(this);
                 bdd.open();
